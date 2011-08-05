@@ -1,0 +1,275 @@
+/*Filename       : dombase.css
+  Redered form   : dombase.sass
+  Need HAML gem  : version 3.0.13
+  Compatibility  : Firefox 3.5, Safari 5.0, Internet Explorer 7 & 8
+  Version        : 1.0 (2010-02-10) YYYY-MM-DD
+  Author         : Novelys
+  Author's Uri   : www.novelys.com
+  Description    : Css file set default tag styles
+
+
+
+// Summary by anchor (ALT+F for search in file) :
+// 0)   _Constants
+// 1)   _Body
+// 2)   _Paragraph
+// 3)   _Blockquote
+// 4)   _Tags
+// 5)   _HTitle
+// 6)   _From
+// 7)   _Lists
+// 8)   _Links
+
+
+
+// _Constants
+$DEFAULT_FONT     : "Arial"
+
+
+
+// _Body
+$BODY_FONT_SIZE    : 12
+$BODY_LINE_HEIGHT  : 16
+
+body
+  :font-family $DEFAULT_FONT
+  :font-size $BODY_FONT_SIZE + px
+  :line-height $BODY_LINE_HEIGHT + px
+  :color $FRAM_COLOR_BLACK
+
+
+
+// _Paragraph
+$PARAGRAPH_FONT_SIZE        : 12
+$PARAGRAPH_LINE_HEIGHT      : 16
+$PARAGRAPH_MARGIN_FROM_TOP  : 0
+
+p
+  @include SetBoxRelPositioning
+  :width 100%
+  :font-size $PARAGRAPH_FONT_SIZE + px
+  :line-height $PARAGRAPH_LINE_HEIGHT + px
+  :color $FRAM_COLOR_BLACK
+  :margin-top $PARAGRAPH_MARGIN_FROM_TOP + px
+
+
+
+// _Blockquote
+$BLOCKQUOTE_FONT_SIZE          : 12
+$BLOCKQUOTE_LINE_HEIGHT        : 16
+$BLOCKQUOTE_MARGIN_FROM_TOP    : 0
+$BLOCKQUOTE_PADDING_FROM_LEFT  : 0
+
+blockquote
+  @include SetBoxRelPositioning
+  :width auto
+  :font-size $BLOCKQUOTE_FONT_SIZE + px
+  :line-height $BLOCKQUOTE_LINE_HEIGHT + px
+  :color $FRAM_COLOR_GRAY4
+  :border-style solid
+  :border-width 0px 0px 0px 4px
+  :padding-left $BLOCKQUOTE_PADDING_FROM_LEFT + px
+  :border-color $FRAM_COLOR_GRAY4
+  :margin-top $BLOCKQUOTE_MARGIN_FROM_TOP + px
+
+
+
+// _Tags
+$TAGS_FONT_SIZE         : 12
+$TAGS_LINE_HEIGHT       : 16
+
+strong, del, em, a, ins
+  :font-size $TAGS_FONT_SIZE + px
+  :line-height $TAGS_LINE_HEIGHT + px
+  :color $FRAM_COLOR_BLACK
+
+a, a:link, a:active, a:visited
+  :color $FRAM_COLOR_BLUE
+
+
+
+// _HTitle
+$FONT_H1_SIZE       : 22
+$FONT_H1_HEIGHT     : 24
+$FONT_H1_MARGIN_TOP : 0
+$FONT_H2_SIZE     : 18
+$FONT_H2_HEIGHT   : 20
+$FONT_H2_MARGIN_TOP : 0
+$FONT_H3_SIZE     : 16
+$FONT_H3_HEIGHT   : 18
+$FONT_H3_MARGIN_TOP : 0
+$FONT_H4_SIZE     : 14
+$FONT_H4_HEIGHT   : 16
+$FONT_H4_MARGIN_TOP : 0
+$FONT_H5_SIZE     : 12
+$FONT_H5_HEIGHT   : 14
+$FONT_H5_MARGIN_TOP : 0
+$FONT_H6_SIZE     : 11
+$FONT_H6_HEIGHT   : 12
+$FONT_H6_MARGIN_TOP : 0
+
+h1, h2, h3, h4, h5, h6
+  @include SetBoxRelPositioning
+  :width 100%
+  :color $FRAM_COLOR_BLACK
+
+h1
+  :font-size $FONT_H1_SIZE + px
+  :line-height $FONT_H1_HEIGHT + px
+  :margin-top $FONT_H1_MARGIN_TOP + px
+
+h2
+  :font-size $FONT_H2_SIZE + px
+  :line-height $FONT_H2_HEIGHT + px
+  :margin-top $FONT_H2_MARGIN_TOP + px
+
+h3
+  :font-size $FONT_H3_SIZE + px
+  :line-height $FONT_H3_HEIGHT + px
+  :margin-top $FONT_H3_MARGIN_TOP + px
+
+h4
+  :font-size $FONT_H4_SIZE + px
+  :line-height $FONT_H4_HEIGHT + px
+  :margin-top $FONT_H4_MARGIN_TOP + px
+
+h5
+  :font-size $FONT_H5_SIZE + px
+  :line-height $FONT_H5_HEIGHT + px
+  :margin-top $FONT_H5_MARGIN_TOP + px
+  :font-weight bold
+
+h6
+  :font-size $FONT_H6_SIZE + px
+  :line-height $FONT_H6_HEIGHT + px
+  :margin-top $FONT_H6_MARGIN_TOP + px
+  :font-weight bold
+
+
+
+// _From
+$FORM_BG_COL                : #f1f1f1
+$FORM_BG_BRD_COL            : #dddddd
+$FORM_BG_BRD_WIDTH          : 1
+$FORM_MARGIN_FROM_TOP       : 0
+$FORM_PADDING               : 0
+$FIELDSET_MARGIN_FROM_TOP   : 0
+$LEGEND_FONT_SIZE           : 12
+$LEGEND_LINE_HEIGHT         : 14
+$LABEL_FONT_SIZE            : 11
+$LABEL_LINE_HEIGHT          : 14
+$FIELD_PADDING              : 4
+$FIELD_ERROR_COLOR_BG       : #ffdbdc
+$FIELD_ERROR_COLOR_BRD      : #ffb2b4
+$FIELD_ERROR_COLOR_TEXT     : #db0d00
+
+form
+  @include SetBoxRelPositioning
+  @include SetMediumRoundedCorner
+  :width auto
+  :height auto
+
+fieldset
+  @include SetBoxRelPositioning
+  @include SetMediumRoundedCorner
+  :width auto
+  :height auto
+
+legend
+  :font-size $LEGEND_FONT_SIZE +px
+  :line-height $LEGEND_LINE_HEIGHT +px
+
+label
+  @include SetBoxRelPositioning
+  :width auto
+  :height auto
+  :font-size $LABEL_FONT_SIZE +px
+  :line-height $LABEL_LINE_HEIGHT +px
+  :color $FRAM_COLOR_BLACK
+
+
+input[type='text'], input[type='password'], textarea
+  @include SetBoxRelPositioning
+  @include SetSmallRoundedCorner
+  :font-family $DEFAULT_FONT
+  :padding $FIELD_PADDING + px
+  :border-style solid
+  :border-width 1px
+  :border-color $FRAM_COLOR_GRAY4
+  :background-color $FRAM_COLOR_WHITE
+
+input[type='text'].error, input[type='password'].error, textarea.error
+  :background-color $FIELD_ERROR_COLOR_BG
+  :border-color $FIELD_ERROR_COLOR_BRD
+  :color $FIELD_ERROR_COLOR_TEXT
+
+input[type='submit']
+  @include SetBoxRelPositioning
+
+
+
+// _Lists
+$LIST_MARGIN_FROM_TOP   : 0
+$LIST_SUB_LIST_MARGIN   : 4
+
+ul
+  @include SetBoxRelPositioning
+  :width auto
+  :height auto
+
+ul, ul li, ul li a, 
+ol, ol li, ol li a
+  :padding 0px
+  :margin 0px
+  :font-size 12px
+  :line-height 14px
+  :color $FRAM_COLOR_BLACK
+
+ul
+  :list-style disc
+  :padding-left 16px
+  :margin-top $LIST_MARGIN_FROM_TOP + px
+  ul
+    :margin-top $LIST_SUB_LIST_MARGIN  + px
+    :margin-bottom $LIST_SUB_LIST_MARGIN + px
+
+ol
+  :list-style decimal
+  :padding-left 16px
+  :margin-top $LIST_MARGIN_FROM_TOP + px
+  ol
+    :list-style disc
+    :margin-top $LIST_SUB_LIST_MARGIN  + px
+    :margin-bottom $LIST_SUB_LIST_MARGIN + px
+
+
+
+// _Links
+a
+  :text-decoration none
+
+a:hover
+  :text-decoration underline
+
+
+
+// _Hr
+$HR_HEIGHT           : 1
+$HR_MARGIN_FROM_TOP  : 0
+
+hr
+  @include SetBoxRelPositioning
+  :width 100%
+  :padding 0px
+  :height $HR_HEIGHT + px
+  :border 0px
+  :font-size 0px
+  :line-height 0px
+  :border-height 0px
+  :color $FRAM_COLOR_GRAY3
+  :border-collapse collapse
+  :background-color $FRAM_COLOR_GRAY3
+  :margin-top $HR_MARGIN_FROM_TOP + px
+
+
+

@@ -1,0 +1,19 @@
+!!! Strict
+%html
+  %head
+    %title SvgFlowChart
+    %meta{ 'content' => 'text/html; charset=UTF-8', 'http-equiv'=> 'content-type' }
+    %meta{:name =>"apple-mobile-web-app-capable", :content =>"yes"}
+    %meta{:name =>"apple-mobile-web-app-status-bar-style", :content =>"default"}
+    %meta{:name =>"apple-touch-fullscreen", :content => "yes"}
+    %meta{:name =>"viewport", :content =>"user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"}
+    %link{:rel  =>"apple-touch-icon", :href => "/assets/appicons/icon.png"}
+    %link{'rel' =>'Shortcut Icon', 'href' => '/assets/appicons/favicon.ico', 'type' => 'image/x-icon'}
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+  %body
+    != yield
+
+
+
+

@@ -1,0 +1,34 @@
+/*Filename       : flowcontrol.css
+  Redered form   : flowcontrol.sass
+  Need HAML gem  : version 3.0.13
+  Compatibility  : Firefox 3.5, Safari 5.0, Internet Explorer 7 & 8
+  Version        : 1.0 (2010-02-10) YYYY-MM-DD
+  Author         : Novelys
+  Author's Uri   : www.novelys.com
+  Description    : Css file set global property for browser flow control hack
+
+
+
+// _ClearFix
+html[xmlns] .clearfix
+  :display block
+
+
+* html .clearfix
+  :height 1%
+
+
+.clearfix:after
+  :content "."
+  :display block
+  :clear both
+  :visibility hidden
+  :line-height 0
+  :height 0
+
+
+.clearfix
+  :display block
+
+
+

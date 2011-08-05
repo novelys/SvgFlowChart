@@ -1,0 +1,65 @@
+/*Filename       : svgflowchart.css
+  Redered form   : svgflowchart.sass
+  Need HAML gem  : version 3.0.13
+  Compatibility  : Firefox 3.5, Safari 5.0, Internet Explorer 7 & 8
+  Version        : 1.0 (2010-02-10) YYYY-MM-DD
+  Author         : Novelys
+  Author's Uri   : www.novelys.com
+  Description    : main project file
+
+
+
+// Summary by anchor (ALT+F for search in file) :
+// 0)  _Constants
+// 1)  _Body
+// 2)  _SvgChartCanvas
+
+
+
+// _Constants
+$PROJECT_DEFAULT_FONT         : "Arial"
+$IMG_PROJECT_PATH             : "/assets/svgflowchart/"
+$CORNER_PROJECT_RADIUS        : 4
+$CORNER_PROJECT_TINY_RADIUS   : 1
+$CORNER_PROJECT_INPUT_RADIUS  : 2
+$CHART_BLUE_DARK              : #0060ae
+$CHART_BLUE_LIGHT             : #80bcff
+$CHART_GREEN_LIGHT            : #a2ee50
+$CHART_ORANGE_LIGHT           : #ff6833
+
+
+
+// _Mixins
+@mixin SetBoxRelPositioning
+  :display block
+  :position relative
+
+@mixin SetBoxAbsPositioning
+  :display block
+  :position absolute
+
+@mixin FixMarginBug
+  :padding-top 1px
+  :margin-top -1px
+
+
+
+// _Body
+body
+  :margin 0px
+  :padding 0px
+  :overflow hidden
+  :background-color #fff
+
+
+
+// _SvgChartCanvas
+.svgflowchart
+  :background-color #DDD
+  :background-image url( $IMG_PROJECT_PATH + 'bg_flowchart.png')
+  :background-position left top
+  :background-repeat repeat
+
+
+
+

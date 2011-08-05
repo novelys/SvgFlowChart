@@ -1,0 +1,284 @@
+/*Filename       : documentation.css
+  Redered form   : documentation.sass
+  Need HAML gem  : version 3.0.13
+  Compatibility  : Firefox 3.5, Safari 5.0, Internet Explorer 7 & 8
+  Version        : 1.0 (2010-02-10) YYYY-MM-DD
+  Author         : Novelys
+  Author's Uri   : www.novelys.com
+  Description    : Documentation Css file 
+
+
+
+/* Summary by anchor (ALT+F for search in file) :
+  0)   _PathsConstants
+  1)   _ColorsAndSizeConstants
+  2)   _CustomColorsConstants
+  3)   _Layout
+  4)   _DocMenu
+  5)   _FontFace
+  6)   _TitleClass
+  7)   _SkeletonList
+  8)   _Mixins
+
+
+
+// _PathsConstants
+!IMG_PATH = "/images/sensassional/doc/"
+
+
+
+// _ColorsAndSizeConstants
+!DOC_BLUE               = #1f1f1f
+!DOC_HEADER_BG          = #1f1f1f
+!DOC_BODY_BG            = #1f1f1f
+!DOC_FOOTER_BG          = #1f1f1f
+!DOC_WRAPPER_BG         = #dddddd
+!DOC_COLON_B_BG         = #ffffff
+!DOC_BLUE_EVIDENCE      = #00a8e8
+!DOC_CODE_BG            = #212121
+!DOC_PREVIEW_BG         = #fff
+!SIZ_BOX_RADIUS         = 4
+!SIZ_BOX_SMALL_RADIUS   = 2
+
+
+
+// _CustomColorsConstants
+
+
+
+// _FontFace
+@font-face
+  :font-family 'Cantarell'
+  :font-style normal
+  :font-weight normal
+  :src local('Cantarell'), url('../images/sensassional/fonts/cantarell.ttf') format('truetype')
+
+@font-face
+  :font-family 'Molengo'
+  :font-style normal
+  :font-weight normal
+  :src local('Molengo'), url('../images/sensassional/fonts/molengo.ttf') format('truetype')
+
+@font-face
+  :font-family 'Lobster'
+  :font-style normal
+  :font-weight normal
+  :src local('Lobster'), url('http://themes.googleusercontent.com/font?kit=X-CahsKZZcJfSyZ_tX4ptg') format('truetype')
+
+
+
+// _Mixins
+@mixin SetSmallRoundedCornerBox
+  :border-radius !SIZ_BOX_SMALL_RADIUS + px
+  :-webkit-border-radius !SIZ_BOX_SMALL_RADIUS + px
+  :-moz-border-radius !SIZ_BOX_SMALL_RADIUS + px
+  :-khtml-border-radius !SIZ_BOX_SMALL_RADIUS + px
+
+@mixin SetRoundedCornerBox
+  :border-radius !SIZ_BOX_RADIUS + px
+  :-webkit-border-radius !SIZ_BOX_RADIUS + px
+  :-moz-border-radius !SIZ_BOX_RADIUS + px
+  :-khtml-border-radius !SIZ_BOX_RADIUS + px
+
+
+
+// _Layout
+!DOC_WIDTH         = 100%
+!DOC_MIN_HEIGHT    = 800
+!DOC_HEADER_HEIGHT = 43
+!DOC_FOOTER_HEIGHT = 27
+!DOC_COLON_A_WIDTH = 15%
+!DOC_COLON_B_WIDTH = 80%
+
+body
+  :background-color !DOC_BODY_BG
+
+#DocWrapper
+  :display block
+  :position relative
+  :width !DOC_WIDTH
+  :min-height !DOC_MIN_HEIGHT + px
+  :background-color !DOC_WRAPPER_BG
+  #DocHeader, #DocFooter
+    :display block
+    :position relative
+    :padding-top 1px
+    :margin-top -1px
+    :width auto
+    :padding-left 20px
+  #DocHeader
+    :height !DOC_HEADER_HEIGHT + px
+    :background-color !DOC_HEADER_BG
+  #DocFooter
+    :height !DOC_FOOTER_HEIGHT + px
+    :background-color !DOC_FOOTER_BG
+  #DocContent
+    :display block
+    :position relative
+    :width 100%
+    #DocColon-A,  #DocColon-B
+      :display block
+      :position relative
+      :min-height !DOC_MIN_HEIGHT + px
+    #DocColon-A
+      :width !DOC_COLON_A_WIDTH
+      :float left
+      :padding-bottom 60px
+      :padding-top 10px
+    #DocColon-B
+      :width !DOC_COLON_B_WIDTH
+      :float right
+      :border-style solid
+      :border-width 0px 0px 0px 1px
+      :border-color !DOC_BLUE
+      :padding-bottom 60px
+      :padding-top 10px
+      :padding-left 20px
+      :padding-right 20px
+      :background-color !DOC_COLON_B_BG
+  #DocContent
+    #DocRow
+      :display block
+      :position relative
+      :width 100%
+      #DocHalfColL, #DocHalfColR
+        :display block
+        :position relative
+      #DocHalfColL
+        :float left
+        :width 67%
+      #DocHalfColR
+        :float right
+        :width 31%
+
+
+
+// _DocMenu
+.docmenu
+  :display block
+  :width 100%
+  :list-style none
+  :color !DOC_BLUE
+  :margin-top 5px
+  a
+    :color !DOC_BLUE
+  li
+    :line-height 20px
+
+
+
+// _TitleClass
+#DocHeader
+  h1
+    :font-weight normal
+
+.Lobster
+  :font-family 'Lobster'
+  :font-size 26px
+  :color #fff
+  :font-weight normal
+
+
+
+// _CodeClass
+.doccode
+  @include SetRoundedCornerBox
+  :display block
+  :position relative
+  :height auto
+  :background !DOC_CODE_BG
+  :padding 10px
+
+
+
+// _PreviewClass
+.docpreview
+  @include SetRoundedCornerBox
+  :display block
+  :position relative
+  :height auto
+  :min-height 40px
+  :background !DOC_PREVIEW_BG
+  :padding 10px
+  :border-style solid
+  :border-width 1px
+  :border-color #e7e7e7
+
+.docpreview.grid
+  :padding 0px
+  :padding-bottom 10px
+  :background-image = "url(" + !IMG_PATH + "grid_example.png)"
+
+.docpreview.grid.center
+  :background-position center center
+
+.docpreview.grid.topleft
+  :background-position top left
+
+.docpreview.grid.topcenter
+  :background-position top center
+
+.docpreview.grid.topright
+  :background-position top right
+
+
+// _PreviewClass
+pre, pre.evidence
+  @include SetRoundedCornerBox
+  :display block
+  :position relative
+  :font-size 12px
+  :line-height 16px
+  :color #fff
+
+pre.evidence
+  :font-weight bolder
+  :color !DOC_BLUE_EVIDENCE
+
+
+
+// _SkeletonList
+ul.skeletonlist
+  :display block
+  :position relative
+  :width 100%
+  :list-style none
+  :padding-left 0px
+  li
+    :display block
+    :position relative
+    :float left
+    :width 250px
+    :min-height 335px
+    :margin-right 20px
+    :margin-bottom 20px
+    img
+      :width 250px
+
+
+
+// _DemoBloc
+.democbloc1
+  :width 200px
+  :height 100px
+  :padding-top 1px
+  :margin-top -1px
+  :background-color #909090
+
+.democbloc2
+  :width 60px
+  :height 60px
+  :padding-top 1px
+  :margin-top -1px
+  :background-color #505050
+
+.democbloc3
+  :width 40px
+  :height 40px
+  :padding-top 1px
+  :margin-top -1px
+  :background-color #303030
+
+
+
+

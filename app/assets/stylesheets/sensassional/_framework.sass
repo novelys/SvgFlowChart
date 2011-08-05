@@ -1,0 +1,575 @@
+/*Filename       : framework.css
+  Redered form   : framework.sass
+  Need HAML gem  : version 3.0.13
+  Compatibility  : Firefox 3.5, Safari 5.0, Internet Explorer 7 & 8
+  Version        : 1.0 (2010-02-10) YYYY-MM-DD
+  Author         : Novelys
+  Author's Uri   : www.novelys.com
+  Description    : Main sensassional framework file
+
+
+
+/* Summary by anchor (ALT+F for search in file) :
+  0)  _GetGridStatus
+  1)  _GetRulerstatus
+  2)  _SetBoxRelPositioning
+  3)  _SetBoxAbsPositioning
+  4)  _FixMarginBug
+  5)  _ResetMe
+  6)  _GenerateAdjustementClass
+  7)  _GenerateMarginClass
+  8)  _GeneratePaddingClass
+  9)  _GeneratePlacementClass
+  10) _GenerateSizeClass
+  11) _RoundedCorner
+  12) _TextClasses
+  13) _BorderClasses
+  14) _HideClasses
+  15) _FloatClasses
+  16) _WrapperAndBlocClasses
+  17) _AdditionalWidthHeightClasses
+  18) _AdditionalMarginClasses
+  19) _ColorsClasses
+  20) _RounderClases
+  21) _WebKitAnimationDeclaration
+  22) _WebKitAnimationClasses
+  23) _RelativeOrAbsolutePos
+  24) _GenerateZindexClass
+
+
+
+
+// _GetGridStatus
+@if $GRID_DISPLAYED == "true"
+  body
+    #Grid
+      :z-index 0
+      :display block
+      :position absolute
+      :left 0px
+      :top 0px
+      :width 100%
+      :height 100%
+      :background-image url($GRIDS_PATH + $GRID_UNIT + "x" + $GRID_UNIT + ".png")
+@if $GRID_POSITION == "center"
+  body
+    #Grid
+      :background-position center center
+@if $GRID_POSITION == "top left"
+  body
+    #Grid
+      :background-position top left
+@if $GRID_POSITION == "top center"
+  body
+    #Grid
+      :background-position top center
+@if $GRID_POSITION == "top right"
+  body
+    #Grid
+      :background-position top right
+
+
+
+// _GetRulersStatus
+@if $RULERS_DISPLAYED == "true"
+  body
+    #Rulers
+      :z-index 990
+      :display block
+      :position absolute
+      :left 0px
+      :top 0px
+      :width 100%
+      :height 100%
+      :background-image url( $RULERS_PATH + $GRID_UNIT + "x" + $GRID_UNIT + ".png")
+      :cursor crosshair
+      .topruler, .leftruler
+        :display block
+        :position absolute
+      .topruler
+        :z-index 991
+        :top 0px
+        :left 0px
+        :height 20px
+        :width 100%
+        :background-color #d2d2d2
+        :background-image url( $RULERS_PATH + "top_rulers.png")
+      .leftruler
+        :z-index 992
+        :top 0px
+        :left 0px
+        :height 100%
+        :width 20px
+        :background-image url( $RULERS_PATH + "left_rulers.png")
+      .yguide, .xguide
+        :display block
+        :position absolute
+        :float left
+      .yguide
+        :z-index 994
+        :width 1px
+        :height 100%
+        :left 0px
+        :background-color red
+      .xguide
+        :z-index 995
+        :width 100%
+        :height 1px
+        :top 0px
+        :background-color blue
+      .infos
+        :display block
+        :position absolute
+        :z-index 996
+        :width 65px
+        :height 12px
+        :background-color #2b2b2b
+        :opacity 0.90
+        :filter Alpha(Opacity=90)
+        :border-radius $CORNER_SMALL_RADIUS + px
+        :-webkit-border-radius $CORNER_SMALL_RADIUS + px
+        :-moz-border-radius $CORNER_SMALL_RADIUS + px
+        :-khtml-border-radius $CORNER_SMALL_RADIUS + px
+        :font-size 10px
+        :line-height 10px
+        :color #fff
+        :text-align center
+        :padding 4px
+@else
+  body
+    #Rulers
+      :display none
+
+@if $GRID_POSITION == "center"
+  body
+    #Rulers
+      :background-position center center
+@if $GRID_POSITION == "top left"
+  body
+    #Rulers
+      :background-position top left
+@if $GRID_POSITION == "bottom right"
+  body
+    #Rulers
+      :background-position bottom right
+@if $GRID_POSITION == "top center"
+  body
+    #Rulers
+      :background-position top center
+
+
+
+// _SetBoxRelPositioning
+@mixin SetBoxRelPositioning
+  :display block
+  :position relative
+
+
+
+// _SetBoxAbsPositioning
+@mixin SetBoxAbsPositioning
+  :display block
+  :position absolute
+
+
+
+// _FixMarginBug
+@mixin FixMarginBug
+  :padding-top 1px
+  :margin-top -1px
+
+
+
+// _ResetMe
+@mixin ResetMe
+  :margin 0px
+  :padding 0px
+  :border 0px
+  :outline 0px
+  :font-size 0px
+  :line-height 0px
+  :vertical-align baseline
+  :background transparent
+  :color transparent
+
+
+
+// _GenerateAdjustementClass 
+// mt-1 (margin top) - (value)
+@if $MARGIN_CLASS_GENERATED == "true"
+  $i: $GRID_UNIT
+  @while $i > 0
+    .mt-0#{$i}
+      :margin-top 1 * $i + px $important
+    .mb-0#{$i}
+      :margin-bottom 1 * $i + px $important
+    .ml-0#{$i}
+      :margin-left 1 * $i + px $important
+    .mr-0#{$i}
+      :margin-right 1 * $i + px $important
+    .pt-0#{$i}
+      :padding-top 1 * $i + px $important
+    .pb-0#{$i}
+      :padding-bottom 1 * $i + px $important
+    .pl-0#{$i}
+      :padding-left 1 * $i + px $important
+    .pr-0#{$i}
+      :padding-right 1 * $i + px $important
+    .top-0#{$i}
+      :top 1 * $i + px $important
+    .left-0#{$i}
+      :left 1 * $i + px $important
+    .right-0#{$i}
+      :right 1 * $i + px $important
+    .bottom-0#{$i}
+      :bottom 1 * $i + px $important
+    $i: $i - 1
+
+
+
+// _GenerateMarginClass 
+// mt-1 (margin top) - (value)
+@if $MARGIN_CLASS_GENERATED == "true"
+  $i: $MAX_MULTIPLICATOR
+  @while $i > 0
+    .m-#{$i}
+      :margin $GRID_UNIT * $i + px !important
+    .mt-#{$i}
+      :margin-top $GRID_UNIT * $i + px !important
+    .mb-#{$i}
+      :margin-bottom $GRID_UNIT * $i + px !important
+    .ml-#{$i}
+      :margin-left $GRID_UNIT * $i + px !important
+    .mr-#{$i}
+      :margin-right $GRID_UNIT * $i + px !important
+    $i: $i - 1
+
+
+
+// _GeneratePaddingClass 
+// mt-1 (margin top) - (value)
+@if $PADDING_CLASS_GENERATED == "true"
+  $i: $MAX_MULTIPLICATOR
+  @while $i > 0
+    .p-#{$i}
+      :padding $GRID_UNIT * $i + px !important
+    .pt-#{$i}
+      :padding-top $GRID_UNIT * $i + px !important
+    .pb-#{$i}
+      :padding-bottom $GRID_UNIT * $i + px !important
+    .pl-#{$i}
+      :padding-left $GRID_UNIT * $i + px !important
+    .pr-#{$i}
+      :padding-right $GRID_UNIT * $i + px !important
+    $i: $i - 1
+
+
+
+// _GeneratePlacementClass
+// top-1 (from top) - (value)
+@if $PLACEMENT_CLASS_GENERATED == "true"
+  $i: $MAX_MULTIPLICATOR
+  @while $i > 0
+    .top-#{$i}
+      :top $GRID_UNIT * $i + px !important
+    .left-#{$i}
+      :left $GRID_UNIT * $i + px !important
+    .right-#{$i}
+      :right $GRID_UNIT * $i + px !important
+    .bottom-#{$i}
+      :bottom $GRID_UNIT * $i + px !important
+    $i: $i - 1
+
+
+
+// _GenerateSizeClass 
+// hg-1 (height) - (value)
+// wg-1 (width) - (value)
+@if $SIZE_CLASS_GENERATED == "true"
+  $i: $MAX_MULTIPLICATOR
+  @while $i > 0
+    .h-#{$i}
+      :height $GRID_UNIT * $i + px !important
+    .w-#{$i}
+      :width $GRID_UNIT * $i + px !important
+    .minh-#{$i}
+      :min-height $GRID_UNIT * $i + px !important
+    .minw-#{$i}
+      :min-width $GRID_UNIT * $i + px !important
+    .maxh-#{$i}
+      :max-height $GRID_UNIT * $i + px !important
+    .maxw-#{$i}
+      :max-width $GRID_UNIT * $i + px !important
+    $i: $i - 1
+
+
+
+// _GenerateOpacityClass 
+// hg-1 (height) - (value)
+// wg-1 (width) - (value)
+@if $OPACITY_CLASS_GENERATED == "true"
+  $i: 0.90
+  $j: 90
+  @while $i > 0
+    .opac-#{$j}
+      :opacity $i !important
+      :filter Alpha(Opacity=$i)
+    $i: $i - 0.10
+    $j: $j - 10
+
+
+
+// _GenerateZindexClass 
+@if $ZINDEX_CLASS_GENERATED == "true"
+  $i: $MAX_MULTIPLICATOR
+  @while $i > 0
+    .zindex-#{$i}
+      :z-index $i !important
+    $i: $i - 1
+
+
+
+// _RoundedCorner
+@mixin SetSmallRoundedCorner
+  :border-radius $CORNER_SMALL_RADIUS + px
+  :-webkit-border-radius $CORNER_SMALL_RADIUS + px
+  :-moz-border-radius $CORNER_SMALL_RADIUS + px
+  :-khtml-border-radius $CORNER_SMALL_RADIUS + px
+
+@mixin SetMediumRoundedCorner
+  :border-radius $CORNER_MEDIUM_RADIUS + px
+  :-webkit-border-radius $CORNER_MEDIUM_RADIUS + px
+  :-moz-border-radius $CORNER_MEDIUM_RADIUS + px
+  :-khtml-border-radius $CORNER_MEDIUM_RADIUS + px
+
+@mixin SetLargeRoundedCorner
+  :border-radius $CORNER_LARGE_RADIUS + px
+  :-webkit-border-radius $CORNER_LARGE_RADIUS + px
+  :-moz-border-radius $CORNER_LARGE_RADIUS + px
+  :-khtml-border-radius $CORNER_LARGE_RADIUS + px
+
+@mixin SetBigRoundedCorner
+  :border-radius $CORNER_BIG_RADIUS + px
+  :-webkit-border-radius $CORNER_BIG_RADIUS + px
+  :-moz-border-radius $CORNER_BIG_RADIUS + px
+  :-khtml-border-radius $CORNER_BIG_RADIUS + px
+
+@mixin SetFullRoundedCorner
+  :border-radius $CORNER_FULL_RADIUS + px
+  :-webkit-border-radius $CORNER_FULL_RADIUS + px
+  :-moz-border-radius $CORNER_FULL_RADIUS + px
+  :-khtml-border-radius $CORNER_FULL_RADIUS + px
+
+
+
+// _TextClasses
+.ta-l
+  :text-align left !important
+
+.ta-r
+  :text-align right !important
+
+.ta-c
+  :text-align center !important
+
+.ta-j
+  :text-align justify !important
+
+
+
+// _BorderClasses
+.nobrd
+  :border 0px !important
+  :border-style none !important
+  :border-color transparent !important
+
+
+
+// _HideClasses
+.hide, .hidden
+  :display none !important
+
+
+
+// _FloatClasses
+.flt-l
+  :float left !important
+
+.flt-r
+  :float right !important
+
+
+
+// _WrapperAndBlocClasses
+.bloc, .row, .wrapper, .colon
+  @include FixMarginBug
+
+
+
+// _RelativeOrAbsolutePos
+.relativepos
+  :display block
+  :position relative !important
+
+.absolutepos
+  :display block
+  :position absolute !important
+
+
+
+// _AdditionalWidthHeightClasses
+.w-full
+  :width 100% !important
+
+.h-full
+  :height 100% !important
+
+.w-auto
+  :width auto !important
+
+.h-auto
+  :height auto !important
+
+.minw-auto
+  :min-width auto !important
+
+.minh-auto
+  :min-height auto !important
+
+
+
+// _AdditionalMarginClasses
+.mh-auto
+  :margin-left auto !important
+  :margin-right auto !important
+
+.mv-auto
+  :margin-top auto !important
+  :margin-bottom auto !important
+
+
+
+// _ColorClasses
+.bg-black
+  :background-color $FRAM_COLOR_BLACK !important
+
+.bg-white
+  :background-color $FRAM_COLOR_WHITE !important
+
+.bg-gray1
+  :background-color $FRAM_COLOR_GRAY1 !important
+
+.bg-gray2
+  :background-color $FRAM_COLOR_GRAY2 !important
+
+.bg-gray3
+  :background-color $FRAM_COLOR_GRAY3 !important
+
+.bg-gray4
+  :background-color $FRAM_COLOR_GRAY4 !important
+
+.bg-gray5
+  :background-color $FRAM_COLOR_GRAY5 !important
+
+.bg-red
+  :background-color $FRAM_COLOR_RED !important
+
+.bg-green
+  :background-color $FRAM_COLOR_GREEN !important
+
+.bg-blue
+  :background-color $FRAM_COLOR_BLUE !important
+
+.bg-yellow
+  :background-color $FRAM_COLOR_YELLOW !important
+
+.bg-orange
+  :background-color $FRAM_COLOR_ORANGE !important
+
+.bg-purple
+  :background-color $FRAM_COLOR_PURPLE !important
+
+.black
+  :color $FRAM_COLOR_BLACK !important
+
+.white
+  :color $FRAM_COLOR_WHITE !important
+
+.gray1
+  :color $FRAM_COLOR_GRAY1 !important
+
+.gray2
+  :color $FRAM_COLOR_GRAY2 !important
+
+.gray3
+  :color $FRAM_COLOR_GRAY3 !important
+
+.gray4
+  :color $FRAM_COLOR_GRAY4 !important
+
+.gray5
+  :color $FRAM_COLOR_GRAY5 !important
+
+.red
+  :color $FRAM_COLOR_RED !important
+
+.green
+  :color $FRAM_COLOR_GREEN !important
+
+.blue
+  :color $FRAM_COLOR_BLUE !important
+
+.yellow
+  :color $FRAM_COLOR_YELLOW !important
+
+.orange
+  :color $FRAM_COLOR_ORANGE !important
+
+.purple
+  :color $FRAM_COLOR_PURPLE !important
+
+
+
+
+// _RounderClases
+.rnd-small
+  @include SetSmallRoundedCorner
+
+.rnd-medium
+  @include SetMediumRoundedCorner
+
+.rnd-large
+  @include SetLargeRoundedCorner
+
+.rnd-big
+  @include SetBigRoundedCorner
+
+.rnd-full
+  @include SetFullRoundedCorner
+
+
+
+// _WebKitAnimationDeclaration
+@-webkit-keyframes flash
+  from
+    :opacity 1.0
+  to
+    :opacity 0.0
+
+
+
+// _WebKitAnimationClasses
+.webkitflash
+  :-webkit-animation-name flash
+  :-webkit-animation-duration 0.2s
+  :-webkit-animation-iteration-count 6
+  :-webkit-animation-direction alternate
+
+.webkitloopflash
+  :-webkit-animation-name flash
+  :-webkit-animation-duration 0.3s
+  :-webkit-animation-iteration-count 600
+  :-webkit-animation-direction alternate
+
+
+

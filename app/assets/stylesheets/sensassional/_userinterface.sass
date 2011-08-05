@@ -1,0 +1,1100 @@
+/*Filename       : userinterface.css
+  Redered form   : userinterface.sass
+  Need HAML gem  : version 3.0.13
+  Compatibility  : Firefox 3.5, Safari 5.0, Internet Explorer 7 & 8
+  Version        : 1.0 (2010-02-10) YYYY-MM-DD
+  Author         : Novelys
+  Author's Uri   : www.novelys.com
+  Description    : Classes for every userinterface elements
+
+
+
+/* Summary by anchor (ALT+F for search in file) :
+  0)   _ColorSizeConstants
+  1)   _RailsError
+  2)   _RailsNotices
+  3)   _Buttons
+  4)   _ButtonBlueColorSheme
+  5)   _DualButtons
+  6)   _DualButtonBlueColorSheme
+  7)   _MultiButtons
+  8)   _MultiButtonsBlueColorSheme
+  9)   _CountLabel
+  10)  _CountLabelBlueColorSheme
+  11)  _CountLabelGreenColorSheme
+  12)  _ButtonsBar
+  13)  _ButtonsRow
+  14)  _Icons
+  15)  _IconsSprites
+  16)  _SmallButtons
+  17)  _IconButtons
+  18)  _SmallIconButtons
+  19)  _SwitchButtons
+
+
+
+// _ColorSizeConstants
+
+
+
+// _RailsError
+$UI_ERROR_COLOR_BG        : #ffdbdc
+$UI_ERROR_COLOR_BRD       : #ffb2b4
+$UI_ERROR_COLOR_TEXT      : #db0d00
+$UI_ERROR_BRD_SIZE        : 1
+$UI_ERROR_FONT_SIZE       : 12
+$UI_ERROR_FONT_HEIGHT     : 14
+$UI_ERROR_LI_HEIGHT       : 16
+$UI_ERROR_PADDING         : $GRID_UNIT
+$UI_ERROR_MARGIN_FROM_TOP : $GRID_UNIT
+
+#errorExplanation.errorExplanation, 
+#errorExplanation, .errorExplanation
+  @include SetBoxRelPositioning
+  @include SetMediumRoundedCorner
+  :width auto
+  :background-color $UI_ERROR_COLOR_BG
+  :color $UI_ERROR_COLOR_TEXT
+  :padding $UI_ERROR_PADDING + px
+  :border-style solid
+  :border-width $UI_ERROR_BRD_SIZE + px
+  :border-color $UI_ERROR_COLOR_BRD
+  :margin-top $UI_ERROR_MARGIN_FROM_TOP + px
+  h2, p , ul, ul li, strong
+    :color $UI_ERROR_COLOR_TEXT
+  p, ul
+    :margin-top $UI_ERROR_PADDING + px
+  p, strong
+    :font-size $UI_ERROR_FONT_SIZE + px
+    :line-height $UI_ERROR_FONT_HEIGHT + px
+  ul li
+    :line-height $UI_ERROR_LI_HEIGHT + px
+
+
+
+// _RailsNotices
+$UI_NOTICE_MARGIN_FROM_TOP : $GRID_UNIT
+$UI_NOTICE_COLOR_BG        : #fff4b2
+$UI_NOTICE_COLOR_BRD       : #ffc812
+$UI_NOTICE_COLOR_TEXT      : #725d34
+$UI_ALERT_COLOR_BG         : #ffdbdc
+$UI_ALERT_COLOR_BRD        : #ffb2b4
+$UI_ALERT_COLOR_TEXT       : #db0d00
+$UI_SUCCES_COLOR_BG        : #dfecb6
+$UI_SUCCES_COLOR_BRD       : #b8d06f
+$UI_SUCCES_COLOR_TEXT      : #31821b
+$UI_NOTICE_BRD_SIZE        : 1
+$UI_NOTICE_FONT_SIZE       : 12
+$UI_NOTICE_FONT_HEIGHT     : 14
+$UI_NOTICE_PADDING         : 10
+
+.notice, .alert, .succes
+  @include SetBoxRelPositioning
+  @include SetMediumRoundedCorner
+  :width auto
+  :padding $UI_NOTICE_PADDING + px
+  :font-size $UI_NOTICE_FONT_SIZE + px
+  :line-height $UI_NOTICE_FONT_HEIGHT + px
+  :border-style solid
+  :border-width $UI_NOTICE_BRD_SIZE + px
+  :margin-top $UI_NOTICE_MARGIN_FROM_TOP + px
+
+.notice
+  :color $UI_NOTICE_COLOR_TEXT
+  :background-color $UI_NOTICE_COLOR_BG
+  :border-color $UI_NOTICE_COLOR_BRD
+
+.alert
+  :color $UI_ALERT_COLOR_TEXT
+  :background-color $UI_ALERT_COLOR_BG
+  :border-color $UI_ALERT_COLOR_BRD
+
+.succes
+  :color $UI_SUCCES_COLOR_TEXT
+  :background-color $UI_SUCCES_COLOR_BG
+  :border-color $UI_SUCCES_COLOR_BRD
+
+
+
+// _Buttons
+$UI_BTN_DEFAULT_FLOAT            : left
+$UI_BTN_HEIGHT                   : 31
+$UI_BTN_MIN_WIDTH                : 0
+$UI_BTN_INSIDE_PADDING           : 15
+$UI_BTN_FONT_SIZE                : 11
+$UI_BTN_LINE_HEIGHT              : 14
+$UI_BTN_INSIDE_HEIGHT            : 23
+$UI_BTN_FONT_ADJUSTMENT          : 8
+$UI_COUNT_LABEL_POS_TOP          : -10
+$UI_BTN_DEFAULT_TEXT_COL         : #000000
+$UI_BTN_DEFAULT_TEXT_WEIGHT      : bold
+$UI_BTN_DEFAULT_TEXT_SHADOW      : #dddddd
+$UI_BTN_ACTIVE_TEXT_COL          : #ffffff
+$UI_BTN_INACTIVE_TEXT_COL        : #949392
+$UI_BTN_DEFAULT_SPRITE           : "button_default.png"
+$UI_BTN_WAITING_SPRITE           : "icn_16_spinner.gif"
+$UI_BTN_WAITING_ACTIVE_SPRITE    : "icn_16_spinner_active.gif"
+
+a.button
+  @include SetBoxRelPositioning
+  :float $UI_BTN_DEFAULT_FLOAT
+  :height $UI_BTN_HEIGHT + px
+  :min-width $UI_BTN_MIN_WIDTH + px
+  :padding-right $UI_BTN_INSIDE_PADDING + px
+  :background-position right -124px !important
+  :text-decoration none
+  :cursor pointer
+  span
+    @include SetBoxRelPositioning
+    :text-shadow none
+    :font-size $UI_BTN_FONT_SIZE + px
+    :line-height $UI_BTN_LINE_HEIGHT + px
+    :height $UI_BTN_INSIDE_HEIGHT + px
+    :min-width $UI_BTN_MIN_WIDTH + px
+    :padding-top $UI_BTN_FONT_ADJUSTMENT + px
+    :padding-left $UI_BTN_INSIDE_PADDING + px
+    :background-position left 0px !important
+    :color $UI_BTN_DEFAULT_TEXT_COL
+    :font-weight $UI_BTN_DEFAULT_TEXT_WEIGHT
+    :text-shadow $UI_BTN_DEFAULT_TEXT_SHADOW 0px 1px 0px
+a.button:hover
+  :background-position right -155px !important
+  span
+    :background-position left -31px !important
+  .icon
+    :background-position 0px -20px !important
+a.button:active, a.button.active, a.button.active:hover, a.button.active:active
+  :background-position right -186px !important
+  span
+    :background-position left -62px !important
+    :color $UI_BTN_ACTIVE_TEXT_COL
+    :text-shadow none
+  .icon
+    :background-position 0px -40px !important
+a.button.inactive, a.button.inactive:hover, a.button.inactive:active
+  :background-position right -217px !important
+  :cursor default
+  span
+    :background-position left -93px !important
+    :color $UI_BTN_INACTIVE_TEXT_COL
+  .icon
+    :background-position 0px -60px !important
+a.button, a.button span
+  .countlabel
+    :top $UI_COUNT_LABEL_POS_TOP + px
+  :background-image url( $SPRITES_PATH + $UI_BTN_DEFAULT_SPRITE)
+a.button.lefticon, a.button.righticon
+  .icon
+    :display block !important
+    :position absolute !important
+    :width 20px
+    :height 20px
+a.button.lefticon
+  span
+    :padding-left 35px
+  .icon
+    :float left
+    :top 5px
+    :left 5px
+a.button.righticon
+  span
+    :padding-right 20px
+  .icon
+    :float right
+    :top 5px
+    :right 5px
+a.button.waiting
+  .icon
+    :background-image url( $ICONS_PATH + $UI_BTN_WAITING_SPRITE ) !important
+    :background-repeat no-repeat !important
+    :background-position 2px 2px !important
+a.button.waiting:active, a.button.waiting.active, a.button.waiting.active:hover, a.button.waiting.active:active
+  .icon
+    :background-image url( $ICONS_PATH + $UI_BTN_WAITING_ACTIVE_SPRITE ) !important
+    :background-position 2px 2px !important
+
+
+
+// _ButtonBlueColorSheme
+$UI_COUNT_LABEL_POS_TOP       : -10
+$UI_BTN_DEFAULT_SPRITE        : "button_blue.png"
+$UI_BTN_DEFAULT_TEXT_COL      : #ffffff
+$UI_BTN_DEFAULT_TEXT_WEIGHT   : bold
+$UI_BTN_DEFAULT_TEXT_SHADOW   : transparent
+$UI_BTN_ACTIVE_TEXT_COL       : #4ca6cf
+$UI_BTN_INACTIVE_TEXT_COL     : #cddbe3
+
+a.button.blue, a.button.blue span
+  .countlabel
+    :top $UI_COUNT_LABEL_POS_TOP + px
+  :background-image url( $SPRITES_PATH + $UI_BTN_DEFAULT_SPRITE )
+a.button.blue
+  span
+    :color $UI_BTN_DEFAULT_TEXT_COL
+    :text-shadow $UI_BTN_DEFAULT_TEXT_SHADOW 0px 1px 0px
+    :font-weight $UI_BTN_DEFAULT_TEXT_WEIGHT
+a.button.blue:active, a.button.blue.active, a.button.blue.active:hover, a.button.blue.active:active
+  span
+    :color $UI_BTN_ACTIVE_TEXT_COL
+a.button.blue.inactive, a.button.blue.inactive:hover, a.button.blue.inactive:active
+  span
+    :color $UI_BTN_INACTIVE_TEXT_COL
+
+
+
+// _DualButtons
+$UI_ROW_BTN_DEFAULT_FLOAT     : left
+$UI_BTN_HEIGHT                : 31
+$UI_DUAL_MIN_WIDTH            : 60
+$UI_BTN_MIN_WIDTH             : 20
+$UI_BTN_FONT_SIZE             : 11
+$UI_BTN_LINE_HEIGHT           : 14
+$UI_BTN_INSIDE_HEIGHT         : 23
+$UI_BTN_FONT_ADJUSTMENT       : 8
+$UI_BTN_LEFT_LEFT_PADDING     : 10
+$UI_BTN_LEFT_RIGHT_PADDING    : 10
+$UI_BTN_RIGHT_LEFT_PADDING    : 10
+$UI_BTN_RIGHT_RIGHT_PADDING   : 10
+$UI_BTN_SEP_HEIGHT            : 31
+$UI_BTN_SEP_WIDTH             : 1
+$UI_COUNT_LABEL_POS_TOP       : -10
+$UI_BTN_DEFAULT_SPRITE        : "button_dual_default.png"
+$UI_BTN_DEFAULT_TEXT_COL      : #000000
+$UI_BTN_DEFAULT_TEXT_WEIGHT   : bold
+$UI_BTN_DEFAULT_TEXT_SHADOW   : #dddddd
+$UI_BTN_ACTIVE_TEXT_COL       : #ffffff
+$UI_BTN_INACTIVE_TEXT_COL     : #949392
+
+.dualbutton
+  @include SetBoxRelPositioning
+  :float $UI_ROW_BTN_DEFAULT_FLOAT
+  :height $UI_BTN_HEIGHT + px
+  :min-width $UI_DUAL_MIN_WIDTH + px
+  a.leftbutton,  a.rightbutton
+    @include SetBoxRelPositioning
+    :height $UI_BTN_HEIGHT + px
+    :min-width $UI_BTN_MIN_WIDTH + px
+    :text-decoration none
+    :cursor pointer
+    span
+      @include SetBoxRelPositioning
+      :text-shadow none
+      :font-size $UI_BTN_FONT_SIZE + px
+      :line-height $UI_BTN_LINE_HEIGHT + px
+      :height $UI_BTN_INSIDE_HEIGHT + px
+      :min-width $UI_BTN_MIN_WIDTH + px
+      :padding-top $UI_BTN_FONT_ADJUSTMENT + px
+      :color $UI_BTN_DEFAULT_TEXT_COL
+      :font-weight $UI_BTN_DEFAULT_TEXT_WEIGHT
+      :text-shadow $UI_BTN_DEFAULT_TEXT_SHADOW 0px 1px 0px
+  a.leftbutton
+    :float left
+    :background-position left 0px !important
+    span
+      :padding-left $UI_BTN_LEFT_LEFT_PADDING + px
+      :padding-right $UI_BTN_LEFT_RIGHT_PADDING + px
+      :text-align left
+  a.rightbutton
+    :float left
+    :background-position right -124px !important
+    span
+      :padding-left $UI_BTN_RIGHT_LEFT_PADDING + px
+      :padding-right $UI_BTN_RIGHT_RIGHT_PADDING + px
+      :text-align right
+  .sep
+    @include SetBoxRelPositioning
+    :float left
+    :height $UI_BTN_SEP_HEIGHT + px
+    :width $UI_BTN_SEP_WIDTH + px
+    :background-position left -248px !important
+  a.leftbutton:hover
+    :background-position left -31px !important
+  a.leftbutton:active, a.leftbutton.active, a.leftbutton.active:hover, a.leftbutton.active:active
+    :background-position left -62px !important
+    span
+      :color $UI_BTN_ACTIVE_TEXT_COL
+      :text-shadow none
+  a.leftbutton.inactive, a.leftbutton.inactive:hover, a.leftbutton.inactive:active
+    :background-position left -93px !important
+    :cursor default
+    span
+      :color $UI_BTN_INACTIVE_TEXT_COL
+      :text-shadow none
+  a.rightbutton:hover
+    :background-position right -155px !important
+  a.rightbutton:active, a.rightbutton.active, a.rightbutton.active:hover, a.rightbutton.active:active
+    :background-position right -186px !important
+    span
+      :color $UI_BTN_ACTIVE_TEXT_COL
+      :text-shadow none
+  a.rightbutton.inactive, a.rightbutton.inactive:hover, a.rightbutton.inactive:active
+    :background-position right -217px !important
+    :cursor default
+    span
+      :color $UI_BTN_INACTIVE_TEXT_COL
+      :text-shadow none
+.dualbutton.inactive
+  .sep
+    :background-position left -279px !important
+  a.rightbutton, a.rightbutton:hover, a.rightbutton:active,
+  a.leftbutton, a.leftbutton:hover, a.leftbutton:active
+    :cursor default
+    span
+      :color $UI_BTN_INACTIVE_TEXT_COL
+      :text-shadow none
+  a.leftbutton, a.leftbutton:hover, a.leftbutton:active
+    :background-position left -93px !important
+  a.rightbutton, a.rightbutton:hover, a.rightbutton:active
+    :background-position right -217px !important
+
+.dualbutton
+  .countlabel
+    :top $UI_COUNT_LABEL_POS_TOP + px
+  a.leftbutton,  a.rightbutton, .sep
+    :background-image url( $SPRITES_PATH + $UI_BTN_DEFAULT_SPRITE )
+
+
+
+// _DualButtonBlueColorSheme
+$UI_COUNT_LABEL_POS_TOP       : -10
+$UI_BTN_DEFAULT_SPRITE        : "button_dual_blue.png"
+$UI_BTN_DEFAULT_TEXT_COL      : #ffffff
+$UI_BTN_DEFAULT_TEXT_WEIGHT   : bold
+$UI_BTN_DEFAULT_TEXT_SHADOW   : transparent
+$UI_BTN_ACTIVE_TEXT_COL       : #4ca6cf
+$UI_BTN_INACTIVE_TEXT_COL     : #cddbe3
+
+.dualbutton.blue
+  .countlabel
+    :top $UI_COUNT_LABEL_POS_TOP + px
+  a.leftbutton,  a.rightbutton, .sep
+    :background-image url( $SPRITES_PATH + $UI_BTN_DEFAULT_SPRITE )
+  a.leftbutton,  a.rightbutton
+    span
+      :color $UI_BTN_DEFAULT_TEXT_COL
+      :text-shadow $UI_BTN_DEFAULT_TEXT_SHADOW 0px 1px 0px
+  a.leftbutton:active, a.leftbutton.active, a.leftbutton.active:hover, a.leftbutton.active:active,
+  a.rightbutton:active, a.rightbutton.active, a.rightbutton.active:hover, a.rightbutton.active:active
+    span
+      :color $UI_BTN_ACTIVE_TEXT_COL
+      :text-shadow none
+  a.leftbutton.inactive, a.leftbutton.inactive:hover, a.leftbutton.inactive:active,
+  a.rightbutton.inactive, a.rightbutton.inactive:hover, a.rightbutton.inactive:active
+    span
+      :color $UI_BTN_INACTIVE_TEXT_COL
+      :text-shadow none
+.dualbutton.blue.inactive
+  a.rightbutton, a.rightbutton:hover, a.rightbutton:active,
+  a.leftbutton, a.leftbutton:hover, a.leftbutton:active
+    span
+      :color $UI_BTN_INACTIVE_TEXT_COL
+      :text-shadow none
+
+
+
+// _MultiButtons
+$UI_ROW_BTN_DEFAULT_FLOAT     : left
+$UI_BTN_HEIGHT                : 31
+$UI_DUAL_MIN_WIDTH            : 60
+$UI_BTN_MIN_WIDTH             : 20
+$UI_BTN_FONT_SIZE             : 11
+$UI_BTN_LINE_HEIGHT           : 14
+$UI_BTN_INSIDE_HEIGHT         : 23
+$UI_BTN_FONT_ADJUSTMENT       : 8
+$UI_BTN_LEFT_LEFT_PADDING     : 10
+$UI_BTN_LEFT_RIGHT_PADDING    : 10
+$UI_BTN_RIGHT_LEFT_PADDING    : 10
+$UI_BTN_RIGHT_RIGHT_PADDING   : 10
+$UI_BTN_SEP_HEIGHT            : 31
+$UI_BTN_SEP_WIDTH             : 1
+$UI_COUNT_LABEL_POS_TOP       : -10
+$UI_BTN_DEFAULT_SPRITE        : "button_multi_default.png"
+$UI_BTN_DEFAULT_TEXT_COL      : #000000
+$UI_BTN_DEFAULT_TEXT_WEIGHT   : bold
+$UI_BTN_DEFAULT_TEXT_SHADOW   : #dddddd
+$UI_BTN_ACTIVE_TEXT_COL       : #ffffff
+$UI_BTN_INACTIVE_TEXT_COL     : #949392
+
+.multibutton
+  @include SetBoxRelPositioning
+  :float $UI_ROW_BTN_DEFAULT_FLOAT
+  :height $UI_BTN_HEIGHT + px
+  :min-width $UI_DUAL_MIN_WIDTH + px
+  a.leftbutton,  a.rightbutton, a.centerbutton
+    @include SetBoxRelPositioning
+    :height $UI_BTN_HEIGHT + px
+    :min-width $UI_BTN_MIN_WIDTH + px
+    :text-decoration none
+    :cursor pointer
+    span
+      @include SetBoxRelPositioning
+      :text-shadow none
+      :font-size $UI_BTN_FONT_SIZE + px
+      :line-height $UI_BTN_LINE_HEIGHT + px
+      :height $UI_BTN_INSIDE_HEIGHT + px
+      :min-width $UI_BTN_MIN_WIDTH + px
+      :padding-top $UI_BTN_FONT_ADJUSTMENT + px
+      :color $UI_BTN_DEFAULT_TEXT_COL
+      :font-weight $UI_BTN_DEFAULT_TEXT_WEIGHT
+      :text-shadow $UI_BTN_DEFAULT_TEXT_SHADOW 0px 1px 0px
+  a.centerbutton
+    :float left
+    :background-position -10px 0px !important
+    span
+      :padding-left $UI_BTN_LEFT_LEFT_PADDING + px
+      :padding-right $UI_BTN_LEFT_RIGHT_PADDING + px
+      :text-align left
+  a.leftbutton
+    :float left
+    :background-position left 0px !important
+    span
+      :padding-left $UI_BTN_LEFT_LEFT_PADDING + px
+      :padding-right $UI_BTN_LEFT_RIGHT_PADDING + px
+      :text-align left
+  a.rightbutton
+    :float left
+    :background-position right -124px !important
+    span
+      :padding-left $UI_BTN_RIGHT_LEFT_PADDING + px
+      :padding-right $UI_BTN_RIGHT_RIGHT_PADDING + px
+      :text-align right
+  .sep
+    @include SetBoxRelPositioning
+    :float left
+    :height $UI_BTN_SEP_HEIGHT + px
+    :width $UI_BTN_SEP_WIDTH + px
+    :background-position left -248px !important
+  a.centerbutton:hover
+    :background-position -10px -31px !important
+  a.centerbutton:active, a.centerbutton.active, a.centerbutton.active:hover, a.centerbutton.active:active
+    :background-position -10px -62px !important
+    span
+      :color $UI_BTN_ACTIVE_TEXT_COL
+      :text-shadow none
+  a.centerbutton.inactive, a.centerbutton.inactive:hover, a.centerbutton.inactive:active
+    :background-position -10px -93px !important
+    :cursor default
+    span
+      :color $UI_BTN_INACTIVE_TEXT_COL
+      :text-shadow none
+  a.leftbutton:hover
+    :background-position left -31px !important
+  a.leftbutton:active, a.leftbutton.active, a.leftbutton.active:hover, a.leftbutton.active:active
+    :background-position left -62px !important
+    span
+      :color $UI_BTN_ACTIVE_TEXT_COL
+      :text-shadow none
+  a.leftbutton.inactive, a.leftbutton.inactive:hover, a.leftbutton.inactive:active
+    :background-position left -93px !important
+    :cursor default
+    span
+      :color $UI_BTN_INACTIVE_TEXT_COL
+      :text-shadow none
+  a.rightbutton:hover
+    :background-position right -155px !important
+  a.rightbutton:active, a.rightbutton.active, a.rightbutton.active:hover, a.rightbutton.active:active
+    :background-position right -186px !important
+    span
+      :color $UI_BTN_ACTIVE_TEXT_COL
+      :text-shadow none
+  a.rightbutton.inactive, a.rightbutton.inactive:hover, a.rightbutton.inactive:active
+    :background-position right -217px !important
+    :cursor default
+    span
+      :color $UI_BTN_INACTIVE_TEXT_COL
+      :text-shadow none
+.multibutton.inactive
+  .sep
+    :background-position left -279px !important
+  a.rightbutton, a.rightbutton:hover, a.rightbutton:active,
+  a.centerbutton, a.centerbutton:hover, a.centerbutton:active,
+  a.leftbutton, a.leftbutton:hover, a.leftbutton:active
+    :cursor default
+    span
+      :color $UI_BTN_INACTIVE_TEXT_COL
+      :text-shadow none
+  a.leftbutton, a.leftbutton:hover, a.leftbutton:active
+    :background-position 0px -93px !important
+  a.centerbutton, a.centerbutton:hover, a.centerbutton:active
+    :background-position -10px -93px !important
+  a.rightbutton, a.rightbutton:hover, a.rightbutton:active
+    :background-position right -217px !important
+
+.multibutton
+  .countlabel
+    :top $UI_COUNT_LABEL_POS_TOP + px
+  a.leftbutton,  a.rightbutton, a.centerbutton, .sep
+    :background-image url( $SPRITES_PATH + $UI_BTN_DEFAULT_SPRITE )
+
+
+
+// _MultiButtonsBlueColorSheme
+$UI_COUNT_LABEL_POS_TOP       : -10
+$UI_BTN_DEFAULT_SPRITE        : "button_multi_blue.png"
+$UI_BTN_DEFAULT_TEXT_COL      : #ffffff
+$UI_BTN_DEFAULT_TEXT_WEIGHT   : bold
+$UI_BTN_DEFAULT_TEXT_SHADOW   : transparent
+$UI_BTN_ACTIVE_TEXT_COL       : #4ca6cf
+$UI_BTN_INACTIVE_TEXT_COL     : #cddbe3
+
+.multibutton.blue
+  .countlabel
+    :top $UI_COUNT_LABEL_POS_TOP + px
+  a.leftbutton,  a.rightbutton, a.centerbutton, .sep
+    :background-image url( $SPRITES_PATH + $UI_BTN_DEFAULT_SPRITE )
+  a.leftbutton,  a.rightbutton, a.centerbutton
+    span
+      :color $UI_BTN_DEFAULT_TEXT_COL
+      :text-shadow $UI_BTN_DEFAULT_TEXT_SHADOW 0px 1px 0px
+  a.leftbutton:active, a.leftbutton.active, a.leftbutton.active:hover, a.leftbutton.active:active,
+  a.centerbutton:active, a.centerbutton.active, a.centerbutton.active:hover, a.centerbutton.active:active,
+  a.rightbutton:active, a.rightbutton.active, a.rightbutton.active:hover, a.rightbutton.active:active
+    span
+      :color $UI_BTN_ACTIVE_TEXT_COL
+      :text-shadow none
+  a.leftbutton.inactive, a.leftbutton.inactive:hover, a.leftbutton.inactive:active,
+  a.centerbutton.inactive, a.centerbutton.inactive:hover, a.centerbutton.inactive:active,
+  a.rightbutton.inactive, a.rightbutton.inactive:hover, a.rightbutton.inactive:active
+    span
+      :color $UI_BTN_INACTIVE_TEXT_COL
+      :text-shadow none
+.multibutton.blue.inactive
+  a.rightbutton, a.rightbutton:hover, a.rightbutton:active,
+  a.centerbutton, a.centerbutton:hover, a.centerbutton:active,
+  a.leftbutton, a.leftbutton:hover, a.leftbutton:active
+    span
+      :color $UI_BTN_INACTIVE_TEXT_COL
+      :text-shadow none
+
+
+
+// _CountLabel
+$UI_COUNT_LABEL_ZINDEX            : 10
+$UI_COUNT_LABEL_DEFAULT_SPRITE    : "counter_default.png"
+$UI_COUNT_LABEL_FLOAT_DEFAULT     : left
+$UI_COUNT_LABEL_MIN_WIDTH         : 2
+$UI_COUNT_LABEL_HEIGHT            : 21
+$UI_COUNT_LABEL_INSIDE_PADDING    : 4
+$UI_COUNT_LABEL_NBS_HEIGHT        : 19
+$UI_COUNT_LABEL_NBS_MIN_WIDTH     : 2
+$UI_COUNT_LABEL_NBS_FONT_SIZE     : 11
+$UI_COUNT_LABEL_NBS_LINE_HEIGHT   : 14
+$UI_COUNT_LABEL_NBS_FONT_WEIGHT   : bold
+$UI_COUNT_LABEL_NBS_PADDING_TOP   : 2
+$UI_COUNT_LABEL_NBS_PADDING_LEFT  : 2
+$UI_COUNT_LABEL_NBS_PADDING_RIGHT : 6
+$UI_COUNT_LABEL_NBS_COLOR         : #ffffff
+$UI_COUNT_LABEL_NBS_SHADOW        : #000000
+
+.countlabel
+  @include SetBoxAbsPositioning
+  :float $UI_COUNT_LABEL_FLOAT_DEFAULT
+  :z-index $UI_COUNT_LABEL_ZINDEX
+  :min-width $UI_COUNT_LABEL_MIN_WIDTH + px
+  :height $UI_COUNT_LABEL_HEIGHT + px
+  :padding-left $UI_COUNT_LABEL_INSIDE_PADDING + px
+  :background-position left -21px !important
+  :background-image url( $SPRITES_PATH + $UI_COUNT_LABEL_DEFAULT_SPRITE )
+  .nbs
+    @include SetBoxRelPositioning
+    :height $UI_COUNT_LABEL_NBS_HEIGHT + px
+    :min-width $UI_COUNT_LABEL_NBS_MIN_WIDTH + px
+    :font-size $UI_COUNT_LABEL_NBS_FONT_SIZE + px
+    :line-height $UI_COUNT_LABEL_NBS_LINE_HEIGHT + px
+    :font-weight $UI_COUNT_LABEL_NBS_FONT_WEIGHT
+    :padding-top $UI_COUNT_LABEL_NBS_PADDING_TOP + px
+    :color $UI_COUNT_LABEL_NBS_COLOR
+    :text-align center
+    :padding-left $UI_COUNT_LABEL_NBS_PADDING_LEFT + px
+    :padding-right $UI_COUNT_LABEL_NBS_PADDING_RIGHT + px
+    :background-position right 0px !important
+    :background-image url( $SPRITES_PATH + $UI_COUNT_LABEL_DEFAULT_SPRITE )
+    :text-shadow $UI_COUNT_LABEL_NBS_SHADOW 0px 1px 0px
+
+
+
+// _CountLabelBlueColorSheme
+$UI_COUNT_LABEL_DEFAULT_SPRITE    : "counter_blue.png"
+
+.countlabel.blue
+  :background-image url( $SPRITES_PATH + $UI_COUNT_LABEL_DEFAULT_SPRITE )
+  .nbs
+    :background-image url( $SPRITES_PATH + $UI_COUNT_LABEL_DEFAULT_SPRITE )
+
+
+
+// _CountLabelBlueColorSheme
+$UI_COUNT_LABEL_DEFAULT_SPRITE    : "counter_green.png"
+
+.countlabel.green
+  :background-image url( $SPRITES_PATH + $UI_COUNT_LABEL_DEFAULT_SPRITE )
+  .nbs
+    :background-image url( $SPRITES_PATH + $UI_COUNT_LABEL_DEFAULT_SPRITE )
+
+
+
+// _ButtonsBar
+$UI_BAR_BTN_WIDTH                     : auto
+$UI_BAR_DEFAULT_SPRITE                : "buttons_bar_default.png"
+$UI_BAR_DEFAULT_SPINNER               : "buttons_bar_default_spinner.gif"
+$UI_BAR_SEPARATOR_DEFAULT_SPRITE      : "buttons_bar_default_separator.png"
+$UI_BAR_SEPARATOR_MARGIN_LEFT         : 10
+$UI_BAR_SEPARATOR_MARGIN_RIGHT        : 10
+$UI_BAR_SEPARATOR_WIDTH               : 2
+$UI_BAR_BTN_HEIGHT                    : 44
+$UI_BAR_BTN_PADDING_LEFT              : 10
+$UI_BAR_BTN_PADDING_RIGHT             : 10
+
+.buttonsbar
+  @include SetBoxRelPositioning
+  :width $UI_BAR_BTN_WIDTH
+  :height $UI_BAR_BTN_HEIGHT + px
+  :background-image url( $SPRITES_PATH + $UI_BAR_DEFAULT_SPRITE )
+  :background-position left bottom
+  :background-repeat repeat-x
+  :padding-left $UI_BAR_BTN_PADDING_LEFT + px
+  :padding-right $UI_BAR_BTN_PADDING_RIGHT + px
+  .separator
+    @include SetBoxRelPositioning
+    :width $UI_BAR_SEPARATOR_WIDTH + px
+    :height $UI_BAR_BTN_HEIGHT + px
+    :margin-left $UI_BAR_SEPARATOR_MARGIN_LEFT + px
+    :margin-right $UI_BAR_SEPARATOR_MARGIN_RIGHT + px
+    :background-image url( $SPRITES_PATH + $UI_BAR_SEPARATOR_DEFAULT_SPRITE )
+    :background-position left bottom
+    :background-repeat no-repeat
+  .status
+    @include SetBoxRelPositioning
+    :height 20px
+    :width auto
+    :margin-top 12px
+    .spinner
+      :position relative
+      :display none
+      :width 16px
+      :height 16px
+      :margin-top 2px
+      :background-image url( $SPRITES_PATH + $UI_BAR_DEFAULT_SPINNER )
+      :background-position center center
+      :background-repeat no-repeat
+    .message
+      @include SetBoxRelPositioning
+      :height 16px
+      :margin-top 3px
+    .message, .message strong
+      :font-size 11px
+      :line-height 12px
+      :color #000
+  .button, .multibutton, .dualbutton, .switchbutton
+    :margin-top 6px
+    :float left
+  .separator
+    :float left
+
+.buttonsbar.buttonfloat-l
+  .button, .multibutton, .dualbutton, .separator, .switchbutton
+    :float left
+  .status
+    :float right
+    .spinner, .message
+      :float right
+    .message
+      :text-align right
+
+.buttonsbar.buttonfloat-r
+  .button, .multibutton, .dualbutton, .separator, .switchbutton
+    :float right
+  .status
+    :float left
+    .spinner, .message
+      :float left
+    .message
+      :text-align left
+
+.buttonsbar.waiting
+  .status
+    .spinner
+      :display block
+
+.buttonsbar.buttonfloat-r.waiting
+  .status
+    .spinner
+      :display block
+    .message
+      :margin-left 10px
+
+.buttonsbar.buttonfloat-l.waiting
+  .status
+    .spinner
+      :display block
+    .message
+      :margin-right 10px
+
+
+
+// _ButtonsRow
+$UI_ROW_BTN_WIDTH             : 100%
+$UI_ROW_BTN_MIN_HEIGHT        : 4
+
+.buttonsrow
+  @include SetBoxRelPositioning
+  :width $UI_ROW_BTN_WIDTH
+  :min-height $UI_ROW_BTN_MIN_HEIGHT + px
+
+
+
+// _Icons
+$UI_ICON_ZINDEX             : 10
+
+.icon
+  :z-index $UI_ICON_ZINDEX
+  :background-image url( $ICONS_PATH + "icn_20_template.png")
+  :background-position 0px 0px !important
+  :background-repeat no-repeat
+
+
+
+// _IconsSprites
+.icon.leftarrow
+  :background-image url( $ICONS_PATH + "icn_20_left_arrow.png")
+
+.icon.rightarrow
+  :background-image url( $ICONS_PATH + "icn_20_right_arrow.png")
+
+.icon.toparrow
+  :background-image url( $ICONS_PATH + "icn_20_top_arrow.png")
+
+.icon.bottomarrow
+  :background-image url( $ICONS_PATH + "icn_20_bottom_arrow.png")
+
+.icon.delete
+  :background-image url( $ICONS_PATH + "icn_20_delete.png")
+
+.icon.more
+  :background-image url( $ICONS_PATH + "icn_20_more.png")
+
+.icon.standby
+  :background-image url( $ICONS_PATH + "icn_20_standby.png")
+
+
+
+// _SmallIcons
+$UI_ICON_ZINDEX             : 10
+
+.smallicon
+  :z-index $UI_ICON_ZINDEX
+  :background-image url( $ICONS_PATH + "icn_16_template.png")
+  :background-position 0px 0px !important
+  :background-repeat no-repeat
+
+
+
+// _SmallIconsSprites
+.smallicon.leftarrow
+  :background-image url( $ICONS_PATH + "icn_16_left_arrow.png")
+
+.smallicon.rightarrow
+  :background-image url( $ICONS_PATH + "icn_16_right_arrow.png")
+
+.smallicon.toparrow
+  :background-image url( $ICONS_PATH + "icn_16_top_arrow.png")
+
+.smallicon.bottomarrow
+  :background-image url( $ICONS_PATH + "icn_16_bottom_arrow.png")
+
+.smallicon.delete
+  :background-image url( $ICONS_PATH + "icn_16_delete.png")
+
+.smallicon.more
+  :background-image url( $ICONS_PATH + "icn_16_more.png")
+
+.smallicon.standby
+  :background-image url( $ICONS_PATH + "icn_16_standby.png")
+
+
+
+// _SmallButtons
+$UI_BTN_DEFAULT_FLOAT            : left
+$UI_BTN_HEIGHT                   : 25
+$UI_BTN_MIN_WIDTH                : 0
+$UI_BTN_INSIDE_PADDING           : 15
+$UI_BTN_FONT_SIZE                : 11
+$UI_BTN_LINE_HEIGHT              : 14
+$UI_BTN_INSIDE_HEIGHT            : 20
+$UI_BTN_FONT_ADJUSTMENT          : 5
+$UI_COUNT_LABEL_POS_TOP          : -10
+$UI_BTN_DEFAULT_TEXT_COL         : #000000
+$UI_BTN_DEFAULT_TEXT_WEIGHT      : bold
+$UI_BTN_DEFAULT_TEXT_SHADOW      : #dddddd
+$UI_BTN_ACTIVE_TEXT_COL          : #ffffff
+$UI_BTN_INACTIVE_TEXT_COL        : #949392
+$UI_BTN_DEFAULT_SPRITE           : "button_small_default.png"
+$UI_BTN_WAITING_SPRITE           : "icn_16_spinner.gif"
+$UI_BTN_WAITING_ACTIVE_SPRITE    : "icn_16_spinner_active.gif"
+
+a.smallbutton
+  @include SetBoxRelPositioning
+  :float $UI_BTN_DEFAULT_FLOAT
+  :height $UI_BTN_HEIGHT + px
+  :min-width $UI_BTN_MIN_WIDTH + px
+  :padding-right $UI_BTN_INSIDE_PADDING + px
+  :background-position right -100px !important
+  :text-decoration none
+  :cursor pointer
+  span
+    @include SetBoxRelPositioning
+    :text-shadow none
+    :font-size $UI_BTN_FONT_SIZE + px
+    :line-height $UI_BTN_LINE_HEIGHT + px
+    :height $UI_BTN_INSIDE_HEIGHT + px
+    :min-width $UI_BTN_MIN_WIDTH + px
+    :padding-top $UI_BTN_FONT_ADJUSTMENT + px
+    :padding-left $UI_BTN_INSIDE_PADDING + px
+    :background-position left 0px !important
+    :color $UI_BTN_DEFAULT_TEXT_COL
+    :font-weight $UI_BTN_DEFAULT_TEXT_WEIGHT
+    :text-shadow $UI_BTN_DEFAULT_TEXT_SHADOW 0px 1px 0px
+a.smallbutton:hover
+  :background-position right -125px !important
+  span
+    :background-position left -25px !important
+  .smallicon
+    :background-position 0px -16px !important
+a.smallbutton:active, a.smallbutton.active, a.smallbutton.active:hover, a.smallbutton.active:active
+  :background-position right -150px !important
+  span
+    :background-position left -50px !important
+    :color $UI_BTN_ACTIVE_TEXT_COL
+    :text-shadow none
+  .smallicon
+    :background-position 0px -32px !important
+a.smallbutton.inactive, a.smallbutton.inactive:hover, a.smallbutton.inactive:active
+  :background-position right -175px !important
+  :cursor default
+  span
+    :background-position left -75px !important
+    :color $UI_BTN_INACTIVE_TEXT_COL
+  .smallicon
+    :background-position 0px -48px !important
+
+a.smallbutton, a.smallbutton span
+  .countlabel
+    :top $UI_COUNT_LABEL_POS_TOP + px
+  :background-image url( $SPRITES_PATH + $UI_BTN_DEFAULT_SPRITE )
+
+a.smallbutton.lefticon, a.smallbutton.righticon
+  .smallicon
+    :display block !important
+    :position absolute !important
+    :width 16px
+    :height 16px
+a.smallbutton.lefticon
+  span
+    :padding-left 28px
+  .smallicon
+    :float left
+    :top 4px
+    :left 4px
+a.smallbutton.righticon
+  span
+    :padding-right 13px
+  .smallicon
+    :float right
+    :top 4px
+    :right 4px
+a.smallbutton.waiting
+  .smallicon
+    :background-image url( $ICONS_PATH + $UI_BTN_WAITING_SPRITE ) !important
+    :background-repeat no-repeat !important
+    :background-position 0px 0px !important
+a.smallbutton.waiting:active, a.smallbutton.waiting.active, a.smallbutton.waiting.active:hover, a.smallbutton.waiting.active:active
+  .smallicon
+    :background-image url( $ICONS_PATH + $UI_BTN_WAITING_ACTIVE_SPRITE ) !important
+    :background-position 0px 0px !important
+
+
+
+// _IconButtons
+$UI_BTN_DEFAULT_FLOAT            : left
+$UI_BTN_HEIGHT                   : 31
+$UI_BTN_MIN_WIDTH                : 30
+$UI_BTN_DEFAULT_SPRITE           : "button_icon_default.png"
+$UI_BTN_WAITING_SPRITE           : "icn_16_spinner.gif"
+$UI_BTN_WAITING_ACTIVE_SPRITE    : "icn_16_spinner_active.gif"
+
+a.buttonicon
+  @include SetBoxRelPositioning
+  :float $UI_BTN_DEFAULT_FLOAT
+  :height $UI_BTN_HEIGHT + px
+  :min-width $UI_BTN_MIN_WIDTH + px
+  :background-position right 0px !important
+  :text-decoration none
+  :cursor pointer
+  :background-image url( $SPRITES_PATH + $UI_BTN_DEFAULT_SPRITE )
+  :background-repeat no-repeat
+  :background-position 0px 0px
+  .icon
+    :display block !important
+    :position absolute !important
+    :width 20px
+    :height 20px
+    :top 5px
+    :left 5px
+a.buttonicon:hover
+  :background-position right -31px !important
+  .icon
+    :background-position 0px -20px !important
+a.buttonicon:active, a.buttonicon.active, a.buttonicon.active:hover, a.buttonicon.active:active
+  :background-position right -62px !important
+  .icon
+    :background-position 0px -40px !important
+a.buttonicon.inactive, a.buttonicon.inactive:hover, a.buttonicon.inactive:active
+  :background-position right -93px !important
+  :cursor default
+  .icon
+    :background-position 0px -60px !important
+a.buttonicon.waiting
+  .icon
+    :background-image url( $ICONS_PATH + $UI_BTN_WAITING_SPRITE ) !important
+    :background-repeat no-repeat !important
+    :background-position 2px 2px !important
+a.buttonicon.waiting:active, a.buttonicon.waiting.active, a.buttonicon.waiting.active:hover, a.buttonicon.waiting.active:active
+  .icon
+    :background-image url( $ICONS_PATH + $UI_BTN_WAITING_ACTIVE_SPRITE ) !important
+    :background-position 2px 2px !important
+
+
+
+// _SmallIconButtons
+$UI_BTN_DEFAULT_FLOAT            : left
+$UI_BTN_HEIGHT                   : 25
+$UI_BTN_MIN_WIDTH                : 24
+$UI_BTN_DEFAULT_SPRITE           : "small_button_icone_default.png"
+$UI_BTN_WAITING_SPRITE           : "icn_16_spinner.gif"
+$UI_BTN_WAITING_ACTIVE_SPRITE    : "icn_16_spinner_active.gif"
+
+a.smallbuttonicon
+  @include SetBoxRelPositioning
+  :float $UI_BTN_DEFAULT_FLOAT
+  :height $UI_BTN_HEIGHT + px
+  :min-width $UI_BTN_MIN_WIDTH + px
+  :background-position right 0px !important
+  :text-decoration none
+  :cursor pointer
+  :background-image url( $SPRITES_PATH + $UI_BTN_DEFAULT_SPRITE )
+  :background-repeat no-repeat
+  :background-position 0px 0px
+  .smallicon
+    :display block !important
+    :position absolute !important
+    :width 16px
+    :height 16px
+    :top 4px
+    :left 4px
+a.smallbuttonicon:hover
+  :background-position right -25px !important
+  .smallicon
+    :background-position 0px -16px !important
+a.smallbuttonicon:active, a.smallbuttonicon.active, a.smallbuttonicon.active:hover, a.smallbuttonicon.active:active
+  :background-position right -50px !important
+  .smallicon
+    :background-position 0px -32px !important
+a.smallbuttonicon.inactive, a.smallbuttonicon.inactive:hover, a.smallbuttonicon.inactive:active
+  :background-position right -75px !important
+  :cursor default
+  .smallicon
+    :background-position 0px -48px !important
+a.smallbuttonicon.waiting
+  .smallicon
+    :background-image  url( $ICONS_PATH + $UI_BTN_WAITING_SPRITE ) !important
+    :background-repeat no-repeat !important
+    :background-position 0px 0px !important
+a.smallbuttonicon.waiting:active, a.smallbuttonicon.waiting.active, a.smallbuttonicon.waiting.active:hover, a.smallbuttonicon.waiting.active:active
+  .smallicon
+    :background-image url( $ICONS_PATH + $UI_BTN_WAITING_ACTIVE_SPRITE ) !important
+    :background-position 0px 0px !important
+
+
+
+// _SwitchButtons
+$UI_ROW_BTN_DEFAULT_FLOAT     : left
+$UI_BTN_HEIGHT                : 31
+$UI_SITCH_WIDTH               : 120
+$UI_SWITCH_BTN_WIDTH          : 59
+$UI_SWITCH_BTN_HEIGHT         : 29
+$UI_BTN_FONT_SIZE             : 11
+$UI_BTN_LINE_HEIGHT           : 14
+$UI_BTN_INSIDE_HEIGHT         : 21
+$UI_BTN_FONT_ADJUSTMENT       : 8
+$UI_BTN_DEFAULT_SPRITE        : "button_switch_default.png"
+$UI_BTN_DEFAULT_TEXT_COL      : #000000
+$UI_BTN_DEFAULT_TEXT_WEIGHT   : bold
+$UI_BTN_DEFAULT_TEXT_SHADOW   : #dddddd
+$UI_BTN_ACTIVE_TEXT_COL       : #ffffff
+$UI_BTN_INACTIVE_TEXT_COL     : #949392
+
+.switchbutton
+  @include SetBoxRelPositioning
+  :float $UI_ROW_BTN_DEFAULT_FLOAT
+  :height $UI_BTN_HEIGHT + px
+  :width $UI_SITCH_WIDTH + px
+  :background-image  url( $SPRITES_PATH + $UI_BTN_DEFAULT_SPRITE )
+  :background-repeat no-repeat
+  :background-position 0px 0px
+  a.leftbutton,  a.rightbutton
+    @include SetBoxRelPositioning
+    :height $UI_SWITCH_BTN_HEIGHT + px
+    :width $UI_SWITCH_BTN_WIDTH + px
+    :text-decoration none
+    :cursor pointer
+    :background-image none
+    span
+      @include SetBoxRelPositioning
+      :text-shadow none
+      :font-size $UI_BTN_FONT_SIZE + px
+      :line-height $UI_BTN_LINE_HEIGHT + px
+      :height $UI_BTN_INSIDE_HEIGHT + px
+      :width $UI_SWITCH_BTN_WIDTH + px
+      :padding-top $UI_BTN_FONT_ADJUSTMENT + px
+      :color $UI_BTN_INACTIVE_TEXT_COL
+      :font-weight $UI_BTN_DEFAULT_TEXT_WEIGHT
+      :text-align center
+  a.leftbutton
+    :float left
+    :left 1px
+  a.rightbutton
+    :float right
+    :right 1px
+
+.switchbutton.on
+  a.leftbutton
+    :background-image  url($SPRITES_PATH + $UI_BTN_DEFAULT_SPRITE )
+    :background-repeat no-repeat
+    :background-position left -31px
+    span
+      :color $UI_BTN_DEFAULT_TEXT_COL
+      :text-shadow $UI_BTN_DEFAULT_TEXT_SHADOW 0px 1px 0px
+.switchbutton.on
+  a.leftbutton:hover
+    :background-position right -31px
+  a.rightbutton:hover
+    span
+      :color $UI_BTN_ACTIVE_TEXT_COL
+
+.switchbutton.off
+  a.rightbutton
+    :background-image url( $SPRITES_PATH + $UI_BTN_DEFAULT_SPRITE )
+    :background-repeat no-repeat
+    :background-position left -31px
+    span
+      :color $UI_BTN_DEFAULT_TEXT_COL
+      :text-shadow $UI_BTN_DEFAULT_TEXT_SHADOW 0px 1px 0px
+.switchbutton.off
+  a.rightbutton:hover
+    :background-position right -31px
+  a.leftbutton:hover
+    span
+      :color $UI_BTN_ACTIVE_TEXT_COL
+
+
+

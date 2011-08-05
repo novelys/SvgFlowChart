@@ -1,0 +1,444 @@
+/*Filename       : skeletons.css
+  Redered form   : skeletons.sass
+  Need HAML gem  : version 3.0.13
+  Compatibility  : Firefox 3.5, Safari 5.0, Internet Explorer 7 & 8
+  Version        : 1.0 (2010-02-10) YYYY-MM-DD
+  Author         : Novelys
+  Author's Uri   : www.novelys.com
+  Description    : Main skeletons framework file, define layouts
+
+
+
+/* Summary by anchor (ALT+F for search in file) :
+  0)  DraftClass
+  1)  Layout-01 (static 2 column)
+  2)  Layout-02 (elastic % based 2 colon)
+  3)  Layout-03
+  4)  Layout-04
+  5)  Layout-05
+  6)  Layout-06
+  7)  Layout-07
+
+
+
+//  DraftClass
+.draftmode
+  :background-image url( $SPRITES_PATH + "bg_bg.png" )
+  #Wrapper
+    :background-image url( $SPRITES_PATH + "bg_wrapper.png")
+    #Header, #Footer
+      :background-repeat no-repeat
+      :background-position center center
+      :background-color #bfbfbf
+    #Header
+      :background-image url( $SPRITES_PATH + "bg_header.png")
+    #Footer
+      :background-image url( $SPRITES_PATH + "bg_footer.png")
+    #Column-A, #Column-B, #Column-C, #Column-D, #Column-E, #Column-F
+      :background-repeat no-repeat
+      :background-position center center
+      :background-color #cfcfcf
+    #Column-A
+      :background-image url( $SPRITES_PATH + "bg_column_a.png")
+    #Column-B
+      :background-image url( $SPRITES_PATH + "bg_column_b.png")
+    #Column-C
+      :background-image url( $SPRITES_PATH + "bg_column_c.png")
+    #Column-D
+      :background-image url( $SPRITES_PATH + "bg_column_d.png")
+    #Column-E
+      :background-image url( $SPRITES_PATH + "bg_column_e.png")
+    #Column-F
+      :background-image url( $SPRITES_PATH + "bg_column_f.png")
+    #BanWrapper-A, #BanWrapper-B, #BanWrapper-C, #BanWrapper-D
+      :background-repeat no-repeat
+      :background-position center center
+      :background-color #9e9e9e
+    #BanWrapper-A
+      :background-image url( $SPRITES_PATH + "bg_banner_wrapper_a.png")
+
+
+
+//  Layout-01 (static 2 column)
+$WORLD_PADDING_TOP     : ($GRID_UNIT * 4)
+$WORLD_PADDING_BOTTOM  : ($GRID_UNIT * 4)
+$WORLD_PADDING_LEFT    : ($GRID_UNIT * 4)
+$WORLD_PADDING_RIGHT   : ($GRID_UNIT * 0)
+
+$WRAPPER_WIDTH         : ($GRID_UNIT * 100)
+$WRAPPER_MIN_HEIGHT    : ($GRID_UNIT * 50)
+$WRAPPER_MARG          : ($GRID_UNIT * 2)
+
+$COLON_A_WIDTH         : ($GRID_UNIT * 26)
+$COLON_B_WIDTH         : ($GRID_UNIT * 68)
+
+$HEADER_HEIGHT         : ($GRID_UNIT * 10)
+$FOOTER_HEIGHT         : ($GRID_UNIT * 4)
+
+#Layout-01
+  :display block
+  :position relative
+  :width auto
+  :padding-top $WORLD_PADDING_TOP + px
+  :padding-bottom $WORLD_PADDING_BOTTOM + px
+  :padding-left $WORLD_PADDING_LEFT + px
+  :padding-right $WORLD_PADDING_RIGHT + px
+  #Wrapper
+    @include SetBoxRelPositioning
+    :width $WRAPPER_WIDTH + px
+    :min-height $WRAPPER_MIN_HEIGHT + px
+    :padding-bottom $WRAPPER_MARG + px
+    #Header, #Footer
+      @include SetBoxRelPositioning
+      :float left
+      :width ($WRAPPER_WIDTH - ($WRAPPER_MARG *2)) + px
+      :margin-left $WRAPPER_MARG + px
+    #Header
+      :float left
+      :margin-top $WRAPPER_MARG + px
+      :height $HEADER_HEIGHT + px
+    #Footer
+      :float left
+      :height $FOOTER_HEIGHT + px
+    #Column-A, #Column-B
+      @include SetBoxRelPositioning
+      :min-height $WRAPPER_MIN_HEIGHT + px
+      :margin-top $WRAPPER_MARG + px
+      :margin-bottom $WRAPPER_MARG + px
+    #Column-A
+      :float left
+      :width $COLON_A_WIDTH + px
+      :margin-left $WRAPPER_MARG + px
+    #Column-B
+      :float right
+      :width $COLON_B_WIDTH + px
+      :margin-right $WRAPPER_MARG + px
+
+
+
+//  Layout-02 (elastic % based 2 column)
+$WORLD_PADDING_TOP     : ($GRID_UNIT * 1)
+$WORLD_PADDING_BOTTOM  : ($GRID_UNIT * 1)
+$WORLD_PADDING_LEFT    : ($GRID_UNIT * 1)
+$WORLD_PADDING_RIGHT   : ($GRID_UNIT * 1)
+
+$WRAPPER_WIDTH         : 100%
+$WRAPPER_MIN_HEIGHT    : ($GRID_UNIT * 50)
+$WRAPPER_MARG          : 0
+
+$COLON_A_WIDTH         : 19%
+$COLON_B_WIDTH         : 80%
+
+$HEADER_HEIGHT         : ($GRID_UNIT * 10)
+$FOOTER_HEIGHT         : ($GRID_UNIT * 4)
+
+#Layout-02
+  :display block
+  :position relative
+  :width auto
+  :padding-top $WORLD_PADDING_TOP + px
+  :padding-bottom $WORLD_PADDING_BOTTOM + px
+  :padding-left $WORLD_PADDING_LEFT + px
+  :padding-right $WORLD_PADDING_RIGHT + px
+  #Wrapper
+    @include SetBoxRelPositioning
+    :float left
+    :width $WRAPPER_WIDTH
+    :min-height $WRAPPER_MIN_HEIGHT + px
+    :padding-bottom $WRAPPER_MARG + px
+    #Header, #Footer
+      @include SetBoxRelPositioning
+      :float left
+      :width $WRAPPER_WIDTH
+      :margin-left $WRAPPER_MARG + px
+    #Header
+      :margin-top $WRAPPER_MARG + px
+      :height $HEADER_HEIGHT + px
+    #Footer
+      :height $FOOTER_HEIGHT + px
+    #Column-A, #Column-B
+      @include SetBoxRelPositioning
+      :min-height $WRAPPER_MIN_HEIGHT + px
+      :margin-top $WRAPPER_MARG + px
+      :margin-bottom $WRAPPER_MARG + px
+    #Column-A
+      :float left
+      :width $COLON_A_WIDTH
+      :margin-left $WRAPPER_MARG + px
+    #Column-B
+      :float right
+      :width $COLON_B_WIDTH
+      :margin-right $WRAPPER_MARG + px
+
+
+
+//  Layout-03
+$WORLD_PADDING_TOP     : ($GRID_UNIT * 0)
+$WORLD_PADDING_BOTTOM  : ($GRID_UNIT * 0)
+$WORLD_PADDING_LEFT    : ($GRID_UNIT * 10)
+$WORLD_PADDING_RIGHT   : ($GRID_UNIT * 0)
+
+$WRAPPER_WIDTH         : ($GRID_UNIT * 90)
+$WRAPPER_MIN_HEIGHT    : ($GRID_UNIT * 50)
+$WRAPPER_MARG          : ($GRID_UNIT * 2)
+
+$COLON_A_WIDTH         : ($GRID_UNIT * 20)
+$COLON_B_WIDTH         : ($GRID_UNIT * 64)
+$COLON_C_WIDTH         : ($GRID_UNIT * 16)
+
+$HEADER_HEIGHT         : ($GRID_UNIT * 15)
+$FOOTER_HEIGHT         : ($GRID_UNIT * 4)
+
+#Layout-03
+  :display block
+  :position relative
+  :width auto
+  :padding-top $WORLD_PADDING_TOP + px
+  :padding-bottom $WORLD_PADDING_BOTTOM + px
+  :padding-left $WORLD_PADDING_LEFT + px
+  :padding-right $WORLD_PADDING_RIGHT + px
+  #Wrapper
+    @include SetBoxRelPositioning
+    :width $WRAPPER_WIDTH + px
+    :min-height $WRAPPER_MIN_HEIGHT + px
+    :padding-bottom $WRAPPER_MARG + px
+    #Header, #Footer
+      @include SetBoxRelPositioning
+      :float left
+      :width ($WRAPPER_WIDTH - ($WRAPPER_MARG *2)) + px
+      :margin-left $WRAPPER_MARG + px
+    #Header
+      :margin-top $WRAPPER_MARG + px
+      :height $HEADER_HEIGHT + px
+    #Footer
+      :height $FOOTER_HEIGHT + px
+    #Column-A, #Column-B
+      @include SetBoxRelPositioning
+      :min-height $WRAPPER_MIN_HEIGHT + px
+      :margin-top $WRAPPER_MARG + px
+      :margin-bottom $WRAPPER_MARG + px
+    #Column-A
+      :float left
+      :width $COLON_A_WIDTH + px
+      :margin-left $WRAPPER_MARG + px
+    #Column-B
+      :float right
+      :width $COLON_B_WIDTH + px
+      :margin-right $WRAPPER_MARG + px
+    #BanWrapper-A
+      @include SetBoxAbsPositioning
+      :min-height $WRAPPER_MIN_HEIGHT + px
+      :float right
+      :width 160px
+      :top $WRAPPER_MARG + px
+      :right - ($WRAPPER_MARG + $COLON_C_WIDTH) + px
+
+
+
+//  Layout-04
+$WORLD_PADDING_TOP     : ($GRID_UNIT * 2)
+$WORLD_PADDING_BOTTOM  : ($GRID_UNIT * 2)
+$WORLD_PADDING_LEFT    : ($GRID_UNIT * 0)
+$WORLD_PADDING_RIGHT   : ($GRID_UNIT * 0)
+
+$WRAPPER_WIDTH         : ($GRID_UNIT * 120)
+$WRAPPER_MIN_HEIGHT    : ($GRID_UNIT * 50)
+$WRAPPER_MARG          : ($GRID_UNIT * 2)
+
+$COLON_A_WIDTH         : ($GRID_UNIT * 24)
+$COLON_B_WIDTH         : ($GRID_UNIT * 68)
+$COLON_C_WIDTH         : ($GRID_UNIT * 20)
+
+$HEADER_HEIGHT         : ($GRID_UNIT * 15)
+$FOOTER_HEIGHT         : ($GRID_UNIT * 4)
+
+#Layout-04
+  :display block
+  :position relative
+  :width auto
+  :padding-top $WORLD_PADDING_TOP + px
+  :padding-bottom $WORLD_PADDING_BOTTOM + px
+  :padding-left $WORLD_PADDING_LEFT + px
+  :padding-right $WORLD_PADDING_RIGHT + px
+  #Wrapper
+    @include SetBoxRelPositioning
+    :width $WRAPPER_WIDTH + px
+    :min-height $WRAPPER_MIN_HEIGHT + px
+    :padding-bottom $WRAPPER_MARG + px
+    :margin-left auto
+    :margin-right auto
+    #Header, #Footer
+      @include SetBoxRelPositioning
+      :float left
+      :width ($WRAPPER_WIDTH - ($WRAPPER_MARG *2)) + px
+      :margin-left $WRAPPER_MARG + px
+    #Header
+      :margin-top $WRAPPER_MARG + px
+      :height $HEADER_HEIGHT + px
+    #Footer
+      :height $FOOTER_HEIGHT + px
+    #Column-A, #Column-B, #Column-C
+      @include SetBoxRelPositioning
+      :min-height $WRAPPER_MIN_HEIGHT + px
+      :margin-top $WRAPPER_MARG + px
+      :margin-bottom $WRAPPER_MARG + px
+    #Column-A
+      :float left
+      :width $COLON_A_WIDTH + px
+      :margin-left $WRAPPER_MARG + px
+    #Column-B
+      :float left
+      :width $COLON_B_WIDTH + px
+      :margin-left $WRAPPER_MARG + px
+    #Column-C
+      :float left
+      :width $COLON_C_WIDTH + px
+      :margin-left $WRAPPER_MARG + px
+
+
+
+//  Layout-05
+$WORLD_PADDING_TOP     : ($GRID_UNIT * 2)
+$WORLD_PADDING_BOTTOM  : ($GRID_UNIT * 2)
+$WORLD_PADDING_LEFT    : ($GRID_UNIT * 0)
+$WORLD_PADDING_RIGHT   : ($GRID_UNIT * 0)
+
+$WRAPPER_WIDTH         : ($GRID_UNIT * 80)
+$WRAPPER_MIN_HEIGHT    : ($GRID_UNIT * 50)
+$WRAPPER_MARG          : ($GRID_UNIT * 2)
+
+$HEADER_HEIGHT         : ($GRID_UNIT * 20)
+$FOOTER_HEIGHT         : ($GRID_UNIT * 10)
+
+#Layout-05
+  :display block
+  :position relative
+  :width auto
+  :padding-top $WORLD_PADDING_TOP + px
+  :padding-bottom $WORLD_PADDING_BOTTOM + px
+  :padding-left $WORLD_PADDING_LEFT + px
+  :padding-right $WORLD_PADDING_RIGHT + px
+  #Wrapper
+    @include SetBoxRelPositioning
+    :width $WRAPPER_WIDTH + px
+    :min-height $WRAPPER_MIN_HEIGHT + px
+    :padding-bottom $WRAPPER_MARG + px
+    :margin-left auto
+    :margin-right auto
+    #Header, #Footer
+      @include SetBoxRelPositioning
+      :float left
+      :width ($WRAPPER_WIDTH - ($WRAPPER_MARG *2)) + px
+      :margin-left $WRAPPER_MARG + px
+    #Header
+      :margin-top $WRAPPER_MARG + px
+      :height $HEADER_HEIGHT + px
+    #Footer
+      :height $FOOTER_HEIGHT + px
+    #Column-A
+      @include SetBoxRelPositioning
+      :float left
+      :min-height $WRAPPER_MIN_HEIGHT + px
+      :margin-top $WRAPPER_MARG + px
+      :margin-bottom $WRAPPER_MARG + px
+      :width ($WRAPPER_WIDTH - ($WRAPPER_MARG *2)) + px
+      :margin-left $WRAPPER_MARG + px
+
+
+
+//  Layout-06
+$WORLD_PADDING_TOP     : ($GRID_UNIT * 2)
+$WORLD_PADDING_BOTTOM  : ($GRID_UNIT * 2)
+$WORLD_PADDING_LEFT    : ($GRID_UNIT * 2)
+$WORLD_PADDING_RIGHT   : ($GRID_UNIT * 0)
+
+$WRAPPER_WIDTH         : ($GRID_UNIT * 60)
+$WRAPPER_MIN_HEIGHT    : ($GRID_UNIT * 50)
+$WRAPPER_MARG          : ($GRID_UNIT * 2)
+
+$HEADER_HEIGHT         : ($GRID_UNIT * 20)
+$FOOTER_HEIGHT         : ($GRID_UNIT * 10)
+
+#Layout-06
+  :display block
+  :position relative
+  :width auto
+  :padding-top $WORLD_PADDING_TOP + px
+  :padding-bottom $WORLD_PADDING_BOTTOM + px
+  :padding-left $WORLD_PADDING_LEFT + px
+  :padding-right $WORLD_PADDING_RIGHT + px
+  #Wrapper
+    @include SetBoxRelPositioning
+    :width $WRAPPER_WIDTH + px
+    :min-height $WRAPPER_MIN_HEIGHT + px
+    :padding-bottom $WRAPPER_MARG + px
+    #Header, #Footer
+      @include SetBoxRelPositioning
+      :float left
+      :width ($WRAPPER_WIDTH - ($WRAPPER_MARG *2)) + px
+      :margin-left $WRAPPER_MARG + px
+    #Header
+      :margin-top $WRAPPER_MARG + px
+      :height $HEADER_HEIGHT + px
+    #Footer
+      :height $FOOTER_HEIGHT + px
+    #Column-A
+      @include SetBoxRelPositioning
+      :float left
+      :min-height $WRAPPER_MIN_HEIGHT + px
+      :margin-top $WRAPPER_MARG + px
+      :margin-bottom $WRAPPER_MARG + px
+      :width ($WRAPPER_WIDTH - ($WRAPPER_MARG *2)) + px
+      :margin-left $WRAPPER_MARG + px
+
+
+
+//  Layout-07
+$WORLD_PADDING_TOP     : ($GRID_UNIT * 1)
+$WORLD_PADDING_BOTTOM  : ($GRID_UNIT * 1)
+$WORLD_PADDING_LEFT    : ($GRID_UNIT * 1)
+$WORLD_PADDING_RIGHT   : ($GRID_UNIT * 1)
+
+$WRAPPER_WIDTH         : 100%
+$WRAPPER_MIN_HEIGHT    : ($GRID_UNIT * 50)
+$WRAPPER_MARG          : 0
+
+$COLON_A_WIDTH         : 100%
+
+$HEADER_HEIGHT         : ($GRID_UNIT * 10)
+$FOOTER_HEIGHT         : ($GRID_UNIT * 4)
+
+#Layout-07
+  :display block
+  :position relative
+  :width auto
+  :padding-top $WORLD_PADDING_TOP + px
+  :padding-bottom $WORLD_PADDING_BOTTOM + px
+  :padding-left $WORLD_PADDING_LEFT + px
+  :padding-right $WORLD_PADDING_RIGHT + px
+  #Wrapper
+    @include SetBoxRelPositioning
+    :width $WRAPPER_WIDTH
+    :min-height $WRAPPER_MIN_HEIGHT + px
+    :padding-bottom $WRAPPER_MARG + px
+    #Header, #Footer
+      @include SetBoxRelPositioning
+      :float left
+      :width $WRAPPER_WIDTH
+      :margin-left $WRAPPER_MARG + px
+    #Header
+      :margin-top $WRAPPER_MARG + px
+      :height $HEADER_HEIGHT + px
+    #Footer
+      :height $FOOTER_HEIGHT + px
+    #Column-A
+      @include SetBoxRelPositioning
+      :min-height $WRAPPER_MIN_HEIGHT + px
+      :margin-top $WRAPPER_MARG + px
+      :margin-bottom $WRAPPER_MARG + px
+      :float left
+      :width $COLON_A_WIDTH
+      :margin-left $WRAPPER_MARG + px
+
+
+
